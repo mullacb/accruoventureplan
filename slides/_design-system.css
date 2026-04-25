@@ -129,7 +129,7 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .fqb-attr { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); text-align: right; margin-top: 10px; font-weight: 600; }
 
 /* Bridge / closing line */
-.bridge { margin-top: 18px; font-size: 14px; line-height: 1.6; color: var(--ink); }
+.bridge { margin-top: 24px; font-size: 14px; line-height: 1.6; color: var(--ink); }
 .bridge strong { color: var(--green); font-weight: 600; }
 .bridge em { font-style: normal; color: var(--gold-deep); font-weight: 600; }
 
