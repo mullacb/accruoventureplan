@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+<title>Accruo Venture Pitch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="_design-system.css">
+</head>
+<body>
+<div class="document" id="deck">
+  <div style="color: rgba(239,234,224,0.5); font-size: 13px; padding: 40px 0;">Loading slides…</div>
+</div>
+
+<script>
+  const SLIDE_FILES = [
+    '01-problem.html',
+    '02-why-now-market.html',
+    '03-solution-overview.html',
+    '04-solution-hr.html',
+    '05-solution-individuals.html',
+    '06-solution-five-year.html',
+    '07-solution-regulatory.html',
+    '08-solution-competition.html',
+    '15-team.html',
+  ];
+
+  // Load each slide's .sw block and inject into the deck.
+  (async () => {
+    const deck = document.getElementById('deck');
+    deck.innerHTML = '';
+    for (const file of SLIDE_FILES) {
+      try {
+        const html = await fetch(file + '?_=' + Date.now()).then(r => r.text());
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const sw = doc.querySelector('.sw');
+        if (sw) deck.appendChild(sw);
+        else {
+          const err = document.createElement('div');
+          err.style.cssText = 'color:rgba(239,234,224,0.5); font-size:12px;';
+          err.textContent = `${file}: no .sw block found`;
+          deck.appendChild(err);
+        }
+      } catch (e) {
+        const err = document.createElement('div');
+        err.style.cssText = 'color:rgba(239,234,224,0.5); font-size:12px;';
+        err.textContent = `${file}: ${e.message}`;
+        deck.appendChild(err);
+      }
+    }
+  })();
+
+  // Auto-reload — polls every slide file's Last-Modified header. Reload on any change.
+  (async () => {
+    const baseTimes = {};
+    setInterval(async () => {
+      try {
+        for (const f of SLIDE_FILES) {
+          const r = await fetch(f + '?_=' + Date.now(), { method: 'HEAD' });
+          const t = r.headers.get('Last-Modified');
+          if (baseTimes[f] === undefined) { baseTimes[f] = t; continue; }
+          if (t && t !== baseTimes[f]) { location.reload(); return; }
+        }
+      } catch {}
+    }, 1500);
+  })();
+</script>
+</body>
+</html>

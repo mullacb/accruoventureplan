@@ -1,0 +1,22 @@
+# Heavy reference material — not needed to render the slides
+archive/
+design-system/
+tools/
+
+# Office files (the real plan/PPTX/Excel lives elsewhere; never commit accidentally)
+*.pptx
+*.docx
+*.xlsx
+*.pdf
+~$*
+
+# OS / editor cruft
+.DS_Store
+*.swp
+*.swo
+
+# Local server logs
+/tmp/*.log
+
+# Claude Code metadata
+.claude/
