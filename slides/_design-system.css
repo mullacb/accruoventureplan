@@ -120,8 +120,8 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .footnotes .fn-row sup { font-weight: 600; color: var(--muted); font-size: 10px; flex-shrink: 0; line-height: 1.45; }
 
 /* Founder quote breakout band (problem page 1) */
-.fq-breakout { margin: 18px calc(var(--m) * -1) 0; padding: 22px var(--m); background: var(--green); position: relative; clear: both; }
-.fqb-statement { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.94); line-height: 1.25; letter-spacing: -.015em; margin: 0 0 24px; }
+.fq-breakout { margin: 24px calc(var(--m) * -1) 0; padding: 20px var(--m); background: var(--green); position: relative; clear: both; }
+.fqb-statement { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.94); line-height: 1.25; letter-spacing: -.015em; margin: 0 0 16px; }
 .fqb-statement em { font-style: normal; color: inherit; font-weight: 500; }
 .fqb-quote-row { display: flex; gap: 16px; align-items: stretch; }
 .fqb-rule { width: 2px; background: var(--gold); flex-shrink: 0; }
