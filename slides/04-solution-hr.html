@@ -23,11 +23,30 @@
         </div>
       </div>
 
-      <p class="t-body" style="margin-bottom: 18px;">Benefits administration today is paper forms, email chains, and broker meetings. Accruo connects to the HRIS once, runs in the background, and gives HR live benchmarks on every decision that used to be a guessing exercise.</p>
+      <p class="t-body" style="margin-bottom: 16px;">Accruo integrates with workplace payroll platforms, Personio, HiBob, Workday, BambooHR, once. From then on, new hires flow in and are auto-enrolled on day one. Leavers offboard automatically. HR sees pension, health, and life cover on one screen, approving the occasional exception. The benefits admin disappears.</p>
 
-      <!-- HR Dashboard mockup + caption -->
-      <div class="mock-row-2 app-lead" style="align-items:stretch;">
-        <div class="app">
+      <!-- HRIS-to-dashboard combined visual: 5 vertical tiles → dotted connector → benchmark dashboard -->
+      <div style="display:flex; align-items:stretch; gap:0; margin-bottom: 16px; flex-shrink:0;">
+
+        <div class="hris-col">
+          <div class="hris-tile"><div class="hris-mark" style="background:#2A2A2A;">P</div>Personio</div>
+          <div class="hris-tile"><div class="hris-mark" style="background:#FF5C00;">H</div>HiBob</div>
+          <div class="hris-tile"><div class="hris-mark" style="background:#0875E1;">W</div>Workday</div>
+          <div class="hris-tile"><div class="hris-mark" style="background:#73C41D;">B</div>BambooHR</div>
+          <div class="hris-tile"><div class="hris-mark" style="background:#00D639; color:#000;">S</div>Sage</div>
+        </div>
+
+        <div class="hris-link">
+          <div class="dot bright"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot bright"></div>
+          <div class="dot"></div>
+          <div class="dot"></div>
+          <div class="dot bright"></div>
+        </div>
+
+        <div class="app" style="flex:1;">
           <div class="app-topbar">
             <div class="app-logo">A</div>
             <div class="app-wm">Accruo</div>
@@ -46,22 +65,21 @@
           <div class="app-body">
             <nav class="app-nav">
               <a href="#"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 10l7-6 7 6v8a1 1 0 0 1-1 1h-3v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg>Dashboard</a>
-              <a href="#"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="14" height="12" rx="2"/><path d="M3 8h14"/></svg>Payroll</a>
               <a href="#"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="7" r="3"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>People</a>
               <a class="active" href="#"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h12v4H4zM4 12h12v4H4z"/></svg>Benefits</a>
               <a href="#"><svg class="ico" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 3h7l4 4v10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/></svg>Documents</a>
             </nav>
             <main class="app-main">
               <div class="app-greeting">Pension policy</div>
-              <div class="app-sub">Set your defaults. Benchmarks from aggregated Accruo data.</div>
+              <div class="app-sub">Galway Tech Ltd, benchmarked against the Irish tech-services sector.</div>
 
               <div class="bench-cards">
                 <div class="bench-card">
                   <div class="btag">Employer contribution</div>
                   <div class="bench-line">
                     <span class="bench-lbl">You</span>
-                    <div class="bench-track"><div class="bench-fill you" style="width:67%"></div></div>
-                    <span class="bench-val you">4%</span>
+                    <div class="bench-track"><div class="bench-fill you" style="width:100%"></div></div>
+                    <span class="bench-val you">6%</span>
                   </div>
                   <div class="bench-line">
                     <span class="bench-lbl">SME med</span>
@@ -73,14 +91,14 @@
                     <div class="bench-track"><div class="bench-fill sector" style="width:100%"></div></div>
                     <span class="bench-val sector">6%</span>
                   </div>
-                  <div class="bench-note">Tech-services peers contribute 2pts more. Consider 5&ndash;6%.</div>
+                  <div class="bench-note">Matches the tech sector. 1pt above the SME median.</div>
                 </div>
                 <div class="bench-card">
                   <div class="btag">Life cover multiple</div>
                   <div class="bench-line">
                     <span class="bench-lbl">You</span>
-                    <div class="bench-track"><div class="bench-fill you" style="width:75%"></div></div>
-                    <span class="bench-val you">3&times;</span>
+                    <div class="bench-track"><div class="bench-fill you" style="width:100%"></div></div>
+                    <span class="bench-val you">4&times;</span>
                   </div>
                   <div class="bench-line">
                     <span class="bench-lbl">SME med</span>
@@ -92,47 +110,46 @@
                     <div class="bench-track"><div class="bench-fill sector" style="width:100%"></div></div>
                     <span class="bench-val sector">4&times;</span>
                   </div>
-                  <div class="bench-note">On par with SME median. Tech peers typically offer 4&times;.</div>
+                  <div class="bench-note">Matches the tech sector. 2&times; above the SME median.</div>
                 </div>
               </div>
             </main>
           </div>
         </div>
 
-        <div class="mock-cap" style="justify-content:center; padding-top:10px;">
-          <div class="mc-tag">Moment 01 &middot; Setup</div>
-          <h4 class="mc-head">Connect once. Configure with live benchmarks.</h4>
-          <p class="mc-body">HRIS integrations with <strong>Workday, Personio, BambooHR, HiBob</strong>. Accruo pulls employees, pushes enrolments, stays in sync. Benchmarks on every setting, contribution rate, life multiple, health excess, turn blind guessing into <em>market comparison</em> HR would run if the data existed.</p>
-          <p class="mc-body">From then on, the platform runs itself. New hires auto-enrolled; leavers offboarded; HR approves the occasional exception.</p>
-        </div>
       </div>
 
-      <!-- AI assistant mockup + caption -->
-      <div class="mock-row-2" style="grid-template-columns: 0.85fr 1fr; gap: 20px; margin-top: 4px; align-items:stretch;">
-        <div class="mock-cap" style="justify-content:center; padding-top:10px;">
-          <div class="mc-tag">Moment 02 &middot; AI assistant</div>
-          <h4 class="mc-head">Drafts the pensions copy, answers the pensions questions.</h4>
-          <p class="mc-body">Trained on Irish pensions regulation, scheme documentation, and Galway Tech's configuration. Drafts benefits copy, answers routed employee questions, flags compliance nudges. HR forwards the response <em>confident in the underlying source</em>.</p>
-        </div>
-        <div class="app" style="height: 210px;">
+      <!-- Block 2 narrative + AI assistant demo -->
+      <div class="sect-h" style="margin-top: 4px;">
+        <div class="eyebrow">Measure, benchmark, and write the copy</div>
+      </div>
+      <div class="mock-row-2" style="grid-template-columns: 1fr 0.85fr; gap: 18px; align-items: stretch; margin-bottom: 12px;">
+        <p class="t-body" style="font-size:13px; align-self:center;">HR teams want to measure employee satisfaction and utilisation, and benchmark their offer against the industry. Accruo's dashboard shows how competitive the company's offer is versus their sector and how much employees are engaging with their benefits. A built-in AI agent answers admin questions and drafts the benefits copy for job posts and internal comms.</p>
+        <div class="app" style="height: 180px;">
           <div class="app-topbar">
             <div class="app-logo">A</div>
             <div class="app-wm">Assistant</div>
             <div class="app-crumbs"><span class="current">HR workspace</span></div>
           </div>
-          <div class="app-main" style="padding: 10px 12px;">
+          <div class="app-main" style="padding: 9px 11px;">
             <div class="chat-card">
               <div class="chat-q">Draft a pensions line for our senior engineer job post. Mention our match and life cover.</div>
               <div class="chat-tag">3 options</div>
               <div class="chat-opt"><strong>Plain</strong>6% employer pension match and 4&times; salary life cover, managed through our digital benefits platform.</div>
-              <div class="chat-opt"><strong>Competitive</strong>6% employer match, above the Irish tech-sector average of 5%, plus 4&times; life cover. Set up in minutes.</div>
-              <div class="chat-opt"><strong>Benefits-led</strong>Top-tier protection from day one: 6% pension, 4&times; life cover, digital benefits platform that takes two minutes.</div>
+              <div class="chat-opt"><strong>Competitive</strong>6% employer match, in line with the Irish tech sector. 4&times; life cover. Set up in minutes.</div>
+              <div class="chat-opt"><strong>Benefits-led</strong>Top-tier protection from day one: 6% pension, 4&times; life cover, two minutes to set up.</div>
             </div>
           </div>
         </div>
       </div>
 
-      <p class="bridge" style="margin-top: 22px;"><strong>The result:</strong> the benefits admin that takes a small-company HR lead a morning a week today becomes an occasional exception to approve.</p>
+      <div class="heard">
+        <div class="h-tag">Heard from a financial-sector HR lead</div>
+        <div class="h-quote">&ldquo;From an HR perspective, our involvement in pensions is at a high level, primarily benchmarking the market for our employer and employee contribution rates.&rdquo;</div>
+        <div class="h-attr">HR Lead, mid-size financial-sector firm (8-year tenure)</div>
+      </div>
+
+      <p class="bridge" style="margin-top: 12px;"><strong>The result:</strong> the benefits admin disappears, and HR has the data to prove the value of their spend.</p>
 
     </div>
     <div class="sf">

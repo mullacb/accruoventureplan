@@ -217,6 +217,61 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .expansion { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.55; color: var(--ink); margin-top: 10px; }
 .expansion strong { font-weight: 700; color: var(--green); }
 
+/* "Heard from..." traction callout (cream tint, gold left border, non-italic serif quote) */
+.heard { background: rgba(201,162,39,0.06); border: 1px solid rgba(201,162,39,0.18); border-left: 2px solid var(--gold); padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; margin: 12px 0; }
+.heard .h-tag { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-deep); }
+.heard .h-quote { font-family: var(--font-serif); font-size: 13px; line-height: 1.5; color: var(--ink); }
+.heard .h-attr { font-size: 9.5px; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+
+/* Out-of-theme placeholder for stats / facts that need user verification */
+.stat-needed { background: rgba(255,120,40,0.16); color: #B25410; padding: 0 5px; border-radius: 3px; font-weight: 600; outline: 1px dashed #B25410; outline-offset: 1px; }
+
+/* ttbl-bar 2-column variant (slide 03 problem-tie-back) */
+.ttbl-bar.fix .tb-hd { grid-template-columns: 200px 1fr; }
+.ttbl-bar.fix .tb-row { grid-template-columns: 200px 1fr; }
+.ttbl-bar.fix .tb-cell:nth-child(2) { border-right: none; }
+
+/* HRIS vertical tile column (slide 04 — left column of integration visual) */
+.hris-col { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; width: 132px; }
+.hris-tile { background: #fff; border: 1px solid var(--r1); border-radius: 6px; padding: 8px 10px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; color: var(--ink); }
+.hris-mark { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0; }
+.hris-link { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 14px; gap: 4px; flex-shrink: 0; align-self: stretch; }
+.hris-link .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
+.hris-link .dot.bright { opacity: 1; }
+
+/* WhatsApp-style notification card + dotted connector (slide 05 onboarding) */
+.wa-notif { background: #fff; border: 1px solid var(--r1); border-radius: 11px; padding: 8px 10px; display: flex; gap: 8px; box-shadow: 0 6px 14px -4px rgba(0,0,0,0.12); align-self: center; max-width: 184px; }
+.wa-notif .wa-icon { width: 24px; height: 24px; border-radius: 6px; background: var(--green); color: #F5F5F2; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 13px; font-weight: 500; flex-shrink: 0; }
+.wa-notif .wa-body { display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+.wa-notif .wa-app { font-size: 9px; font-weight: 700; color: var(--green); letter-spacing: .04em; }
+.wa-notif .wa-msg { font-size: 10.5px; color: var(--ink); line-height: 1.35; }
+.wa-conn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 6px 0; align-self: center; }
+.wa-conn .dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); opacity: 0.7; }
+
+/* Trading-app phone screen (slide 06 self-directed demo) */
+.trade-screen { display: flex; flex-direction: column; height: 100%; }
+.trade-bar { display: flex; align-items: center; gap: 6px; font-size: 9px; color: var(--muted); margin-bottom: 6px; }
+.trade-symbol { font-family: var(--font-serif); font-size: 18px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; line-height: 1; margin-bottom: 2px; }
+.trade-name { font-size: 9px; color: var(--muted); margin-bottom: 8px; }
+.trade-price { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: var(--gold); font-variant-numeric: tabular-nums; line-height: 1; margin-bottom: 4px; }
+.trade-change { display: inline-block; font-size: 9.5px; font-weight: 700; padding: 2px 6px; border-radius: 4px; background: rgba(19,79,52,0.1); color: var(--green); margin-bottom: 10px; }
+.trade-change.dn { background: rgba(139,26,26,0.1); color: #8B1A1A; }
+.trade-chart { height: 56px; margin-bottom: 10px; background: rgba(19,79,52,0.04); border-radius: 5px; position: relative; overflow: hidden; }
+.trade-chart svg { display: block; width: 100%; height: 100%; }
+.trade-pos { background: #fff; border: 1px solid var(--r1); border-radius: 5px; padding: 6px 8px; display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px; }
+.trade-pos-lbl { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.trade-pos-val { font-family: var(--font-serif); font-size: 13px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+.trade-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: auto; }
+.btn-buy { background: var(--green); color: #F5F5F2; border: 0; border-radius: 999px; padding: 7px; text-align: center; font-size: 9.5px; font-weight: 600; }
+.btn-sell { background: transparent; border: 1px solid var(--r1); color: var(--ink); border-radius: 999px; padding: 7px; text-align: center; font-size: 9.5px; font-weight: 600; }
+
+/* BlackRock fund onboarding card (slide 05 phone 1) */
+.fund-card { background: #fff; border: 1px solid var(--r1); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; }
+.fund-card .fc-tag { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+.fund-card .fc-name { font-family: var(--font-serif); font-size: 13px; font-weight: 500; color: var(--ink); line-height: 1.15; margin-bottom: 4px; }
+.fund-card .fc-blurb { font-size: 9.5px; color: var(--muted); line-height: 1.4; }
+.btn-link { background: transparent; color: var(--green); font-size: 9px; font-weight: 600; text-align: center; padding: 4px; text-decoration: underline; }
+
 /* Acquisition signal block (slide 08) */
 .acq-signal { background: var(--green); color: #F5F5F2; padding: 14px 18px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 24px; margin: 14px 0 12px; flex-shrink: 0; }
 .acq-signal-hd { font-size: 9.5px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); grid-column: 1 / -1; margin-bottom: 2px; }
