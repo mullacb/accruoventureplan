@@ -1,13 +1,17 @@
-// Auto-reload — polls the current page's Last-Modified header and reloads on change.
+// Auto-reload — polls Last-Modified for the current page AND the shared
+// design-system CSS, reloads the tab on any change.
 // Only works over http:// (file:// strips Last-Modified from fetch responses).
 (async () => {
-  let baseTime = null;
+  const watched = [location.pathname, '_design-system.css'];
+  const baseTimes = {};
   setInterval(async () => {
     try {
-      const r = await fetch(location.pathname + '?_=' + Date.now(), { method: 'HEAD' });
-      const t = r.headers.get('Last-Modified');
-      if (baseTime === null) { baseTime = t; return; }
-      if (t && t !== baseTime) location.reload();
+      for (const f of watched) {
+        const r = await fetch(f + '?_=' + Date.now(), { method: 'HEAD' });
+        const t = r.headers.get('Last-Modified');
+        if (baseTimes[f] === undefined) { baseTimes[f] = t; continue; }
+        if (t && t !== baseTimes[f]) { location.reload(); return; }
+      }
     } catch {}
   }, 1500);
 })();

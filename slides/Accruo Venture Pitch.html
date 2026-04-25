@@ -52,12 +52,13 @@
     }
   })();
 
-  // Auto-reload — polls every slide file's Last-Modified header. Reload on any change.
+  // Auto-reload — polls every slide file AND the shared CSS. Reload on any change.
+  const WATCH_FILES = [...SLIDE_FILES, '_design-system.css'];
   (async () => {
     const baseTimes = {};
     setInterval(async () => {
       try {
-        for (const f of SLIDE_FILES) {
+        for (const f of WATCH_FILES) {
           const r = await fetch(f + '?_=' + Date.now(), { method: 'HEAD' });
           const t = r.headers.get('Last-Modified');
           if (baseTimes[f] === undefined) { baseTimes[f] = t; continue; }
