@@ -27,8 +27,24 @@
     '09-bizmodel-revenue.html',
     '10-bizmodel-sustainability.html',
     '11-bizmodel-financials.html',
+    '12-execution-path.html',
+    '13-execution-gtm.html',
+    '14-execution-expansion.html',
     '15-team.html',
   ];
+
+  // Scroll preservation — set up before the async slide load so saving on
+  // unload (manual Cmd+R, auto-reload, or anything else) works, and restore
+  // happens AFTER all slides are appended so the page is tall enough.
+  const SCROLL_KEY = '_reload_scroll:' + location.pathname;
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  const saveScroll = () => sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
+  window.addEventListener('beforeunload', saveScroll);
+  window.addEventListener('pagehide', saveScroll);
+  const _savedY = (() => {
+    const v = sessionStorage.getItem(SCROLL_KEY);
+    return v === null ? null : parseInt(v, 10);
+  })();
 
   // Load each slide's .sw block and inject into the deck.
   (async () => {
@@ -53,10 +69,21 @@
         deck.appendChild(err);
       }
     }
+    // All slides appended. Now restore scroll if we have one. Two RAFs to give
+    // layout a chance to flush.
+    if (_savedY !== null) {
+      requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, _savedY)));
+    }
   })();
 
-  // Auto-reload — polls every slide file AND the shared CSS. Reload on any change.
+  // Auto-reload — polls every slide file AND the shared CSS. CSS changes swap
+  // the <link> href (cache-busted) so the new stylesheet is guaranteed to load;
+  // slide changes do a full page reload. Scroll position is preserved.
   const WATCH_FILES = [...SLIDE_FILES, '_design-system.css'];
+  const reloadKeepingScroll = () => {
+    saveScroll();
+    location.reload();
+  };
   (async () => {
     const baseTimes = {};
     setInterval(async () => {
@@ -65,7 +92,21 @@
           const r = await fetch(f + '?_=' + Date.now(), { method: 'HEAD' });
           const t = r.headers.get('Last-Modified');
           if (baseTimes[f] === undefined) { baseTimes[f] = t; continue; }
-          if (t && t !== baseTimes[f]) { location.reload(); return; }
+          if (t && t !== baseTimes[f]) {
+            baseTimes[f] = t;
+            if (f.endsWith('.css')) {
+              for (const link of document.querySelectorAll('link[rel="stylesheet"]')) {
+                const u = new URL(link.href, location.href);
+                if (u.pathname.endsWith('/' + f) || u.pathname.endsWith(f)) {
+                  u.searchParams.set('_', Date.now());
+                  link.href = u.toString();
+                }
+              }
+            } else {
+              reloadKeepingScroll();
+            }
+            return;
+          }
         }
       } catch {}
     }, 1500);

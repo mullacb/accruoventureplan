@@ -12,49 +12,78 @@
 <div class="document">
 
 <div class="sw">
+  <style>
+    .factcard {
+      background: rgba(19,79,52,0.04);
+      border-left: 3px solid var(--green);
+      padding: 11px 16px 12px;
+      margin: 10px 0;
+    }
+    .factcard .fc-tag {
+      font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 7px;
+    }
+    .factcard ul { margin: 0; padding: 0; list-style: none; }
+    .factcard li {
+      font-size: 12.5px; line-height: 1.5; color: var(--ink);
+      padding-left: 14px; position: relative; margin-bottom: 4px;
+    }
+    .factcard li:last-child { margin-bottom: 0; }
+    .factcard li::before {
+      content: ""; position: absolute; left: 0; top: 8px;
+      width: 5px; height: 5px; border-radius: 50%; background: var(--gold);
+    }
+    .factcard li strong { color: var(--green); font-weight: 600; }
+  </style>
   <div class="sm">07 &middot; Regulatory design <em>Three structural choices, one location bet</em></div>
   <div class="slide cream">
     <div class="si fc">
 
       <div class="sh">
         <div class="sh-left">
-          <div class="eyebrow">2.5 &middot; Regulatory design</div>
+          <div class="eyebrow">2.5 &middot; Regulation</div>
           <h2 class="t-title">Regulatory design at the core.</h2>
         </div>
       </div>
 
-      <p class="t-body" style="margin-bottom: 18px;">Regulatory design is at the core of our product offering: from leveraging personal pension products (PRSA and EuroPension) in the workplace context, instead of the traditional group plans, to the choice between investment-account versus insurance wrapper, to the location we launch from.</p>
+      <p class="t-body" style="margin-bottom: 16px;">Most Irish pensions are sold as insurance contracts and run as collective employer schemes. Accruo makes the opposite choice on both, and the saver gets a better product for it.</p>
 
-      <div class="moment-grid three">
-        <div class="moment">
-          <div class="m-tag">01 &middot; MiFID, not insurance</div>
-          <h4 class="m-head">An investment account, not an insurance contract.</h4>
-          <p class="m-body">Accruo's pension is a <strong>MiFID custody account</strong> holding funds on behalf of the saver. Incumbents structure pensions as unit-linked life-insurance products. The MiFID wrapper unlocks broad fund choice, transparent fees, and a path to self-direction that insurance-based products cannot offer without rebuilding from the ground up.</p>
-        </div>
-        <div class="moment">
-          <div class="m-tag">02 &middot; Individual, not collective</div>
-          <h4 class="m-head">The saver owns the account. The employer contributes.</h4>
-          <p class="m-body">Each employee holds their own pension account; the employer's contributions flow into it. Incumbents run <strong>collective company schemes</strong> where employees own a share of a pooled pot managed by the employer. Accruo's account moves with the employee across jobs, providers, and borders.</p>
-        </div>
-        <div class="moment">
-          <div class="m-tag">03 &middot; Personal pension as workplace product</div>
-          <h4 class="m-head">The PRSA, used in the workplace context.</h4>
-          <p class="m-body">The PRSA is structurally a personal pension. We use it as the workplace product instead of the traditional group plan. The same structure, applied across the EU, <strong>is the EuroPension</strong>: the choice that works in Ireland is the choice that also passports into every member state, with only the local tax wrapper changing.</p>
-        </div>
+      <div class="sect-h" style="margin-top: 4px;">
+        <div class="eyebrow">The pension that moves with you</div>
+      </div>
+      <p class="t-body">Accruo enters the market with the <strong>Personal Retirement Savings Account (PRSA)</strong>, an individually owned pension, instead of the collective master trust schemes incumbents run.</p>
+
+      <div class="factcard">
+        <div class="fc-tag">Why the PRSA</div>
+        <ul>
+          <li><strong>Personal account.</strong> Owned by the saver, not the employer. Stays with them across job changes.</li>
+          <li><strong>Workplace-eligible.</strong> Employers can adopt the PRSA as their workplace pension, and small employers are legally required to have a PRSA provider, even if they're in the government's auto-enrolment scheme.</li>
+          <li><strong>Drawdown stays with us.</strong> At retirement, savers draw down directly from the PRSA.</li>
+        </ul>
       </div>
 
-      <div class="sect-h" style="margin-top: 22px;">
-        <div class="eyebrow">Why Ireland over Lithuania</div>
-      </div>
-      <p class="t-body">We evaluated Ireland against startup-friendly jurisdictions like Lithuania. We chose Ireland for three reasons: an improving regulatory environment, a competitive corporate tax structure, and a promising initial market with the auto-enrolment tailwind launching this year.</p>
-
-      <div class="heard">
-        <div class="h-tag">Heard via the CEO of NBC Global Finance</div>
-        <div class="h-quote">&ldquo;We're working towards our full banking licence. Ireland's regulatory environment has improved a lot in recent years. Spoke to Monzo's Irish CEO recently, we both agree it's rigorous but efficient. Ireland is better for start-ups now.&rdquo;</div>
-        <div class="h-attr">CEO, NBC Global Finance (Irish Investment Firm)</div>
+      <div class="heard" style="margin-top: 12px;">
+        <div class="h-tag">Our discussion with the Head of Investments at Bank of Ireland</div>
+        <div class="h-quote">&ldquo;Larger corporate clients raise post-retirement support as a real concern. Master trusts don't permit drawdown, so when they're evaluating a scheme they want to know there's a credible exit path for their members.&rdquo;</div>
       </div>
 
-      <p class="bridge" style="margin-top: 14px;"><strong>Slide 2.6</strong> maps how this plays out across the Irish and European competitive landscape.</p>
+      <p class="t-body">The <strong>EuroPension</strong> is structurally the same individual-account product, so when we expand we'll already have the infrastructure and licence. We launch on the PRSA because the EuroPension can't currently accept transfers from existing Irish PRSAs. That constraint doesn't exist in other EU markets, and ongoing reforms may close it for Ireland too.</p>
+
+      <div class="sect-h">
+        <div class="eyebrow">Plain language, more customisation</div>
+      </div>
+      <p class="t-body" style="margin-bottom: 9px;">An Accruo statement will show <strong>your shares in the Vanguard S&amp;P 500 fund</strong>, where the incumbents show units in a unit-linked Global Equity policy linked to the holdings in the Vanguard S&amp;P 500. And as we move beyond our MVP, we'll be able to offer our clients more customisation than incumbents can match.</p>
+      <p class="t-body">This is structural. We run the pension as a <strong>MiFID custody account</strong>, where clients directly own their assets. Incumbents wrap pensions as insurance products under Solvency II, a regime designed for insurance risk. As an added bonus, MiFID regulatory capital and ongoing operational burdens are lighter too.</p>
+
+      <div class="sect-h">
+        <div class="eyebrow">Ireland over alternative licensing jurisdictions</div>
+      </div>
+      <p class="t-body">We considered other jurisdictions, such as Lithuania, known for start-up-friendly licensing. Ireland wins on four counts: a regulatory environment that has become markedly more pro-business in recent years, a competitive corporate tax structure with start-up rebates, a promising launch market with auto-enrolment behind it, and an Irish licence that carries a trust premium an Eastern European licence does not.</p>
+
+      <div class="heard green" style="margin-top: 14px;">
+        <div class="h-tag">Our discussion with the CEO of NBC Global Finance</div>
+        <div class="h-quote">&ldquo;Five years ago, the Central Bank of Ireland wasn't easy to work with. We're in the final stages of our banking licence now, and they're more competent and more business-friendly than they were. I was speaking with Monzo's Irish CEO recently and he said the same thing. The process is rigorous, but efficient. It's a good time to launch a firm in Ireland.&rdquo;</div>
+      </div>
 
     </div>
     <div class="sf">

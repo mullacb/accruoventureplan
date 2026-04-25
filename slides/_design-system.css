@@ -120,9 +120,15 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .footnotes .fn-row sup { font-weight: 600; color: var(--muted); font-size: 10px; flex-shrink: 0; line-height: 1.45; }
 
 /* Founder quote breakout band (problem page 1) */
-.fq-breakout { margin: 24px calc(var(--m) * -1) 0; padding: 20px var(--m); background: var(--green); position: relative; clear: both; }
-.fqb-statement { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.94); line-height: 1.25; letter-spacing: -.015em; margin: 0 0 16px; }
-.fqb-statement em { font-style: normal; color: inherit; font-weight: 500; }
+.fq-breakout {
+  margin: 24px calc(var(--m) * -1) 0; padding: 20px var(--m);
+  background-color: var(--green);
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1.2px, transparent 1.6px);
+  background-size: 14px 14px;
+  position: relative; clear: both;
+}
+.fq-breakout .fqb-statement { font-family: var(--font-serif); font-size: 22px; font-weight: 500; color: rgba(255,255,255,0.94); line-height: 1.25; letter-spacing: -.015em; margin: 0 0 20px; }
+.fq-breakout .fqb-statement em { font-style: normal; color: inherit; font-weight: 500; }
 .fqb-quote-row { display: flex; gap: 16px; align-items: stretch; }
 .fqb-rule { width: 2px; background: var(--gold); flex-shrink: 0; }
 .fqb-quote { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.65; color: rgba(255,255,255,0.72); flex: 1; margin: 0; }
@@ -201,9 +207,23 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .dt th.nr { text-align: right; }
 .dt td { padding: 7px 10px; vertical-align: top; color: var(--ink); border-bottom: 1px solid var(--r0); }
 .dt tbody tr:nth-child(even) td { background: rgba(19,79,52,0.03); }
-.dt .nr { font-variant-numeric: tabular-nums; text-align: right; font-family: var(--font-serif); font-weight: 500; }
+.dt .nr { font-variant-numeric: tabular-nums; text-align: right; }
+.dt tbody .nr { font-family: var(--font-serif); font-weight: 500; font-size: 14px; line-height: 1.25; }
 .dt tfoot td, .dt tr.total td { font-weight: 700; border-top: 1.5px solid var(--r2); padding-top: 8px; background: rgba(19,79,52,0.06) !important; }
 .dt tr.total td.nr.em { color: var(--green); font-weight: 700; }
+
+/* .dt.market — slide 02 variant: green hairlines + green-toned header */
+.dt.market thead th {
+  background: rgba(19,79,52,0.07) !important;
+  color: var(--green);
+  border-top: 2px solid var(--green);
+  border-bottom: 1px solid var(--r1);
+}
+.dt.market tr.total td {
+  border-top: 1.5px solid var(--green);
+  border-bottom: 2px solid var(--green);
+  padding-top: 10px; padding-bottom: 10px;
+}
 
 /* Market row (growth note + share card) */
 .market-row { display: grid; grid-template-columns: 1.4fr 1fr; gap: 16px; margin-top: 10px; align-items: stretch; }
@@ -214,30 +234,133 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .share-card .sc-fig { font-family: var(--font-serif); font-size: 26px; line-height: 1; font-weight: 500; letter-spacing: -.02em; color: var(--gold); font-variant-numeric: tabular-nums; }
 .share-card .sc-body { font-size: 11px; line-height: 1.5; color: rgba(245,245,242,0.85); }
 
-.expansion { font-family: var(--font-sans); font-size: 12.5px; line-height: 1.55; color: var(--ink); margin-top: 10px; }
+.expansion { font-family: var(--font-sans); font-size: 13px; line-height: 1.55; color: var(--ink); margin-top: 56px; }
 .expansion strong { font-weight: 700; color: var(--green); }
 
 /* "Heard from..." traction callout (cream tint, gold left border, non-italic serif quote) */
 .heard { background: rgba(201,162,39,0.06); border: 1px solid rgba(201,162,39,0.18); border-left: 2px solid var(--gold); padding: 10px 14px; display: flex; flex-direction: column; gap: 4px; flex-shrink: 0; margin: 12px 0; }
 .heard .h-tag { font-size: 9px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold-deep); }
-.heard .h-quote { font-family: var(--font-serif); font-size: 13px; line-height: 1.5; color: var(--ink); }
+.heard .h-quote { font-family: var(--font-serif); font-size: 15px; line-height: 1.5; color: var(--ink); }
 .heard .h-attr { font-size: 9.5px; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+
+/* green variant — solid green band, cream/gold typography, dot texture */
+.heard.green {
+  background-color: var(--green);
+  background-image: radial-gradient(rgba(255,255,255,0.07) 1.2px, transparent 1.6px);
+  background-size: 14px 14px;
+  border: none; border-left: 2px solid var(--gold);
+  padding: 12px 16px;
+}
+.heard.green .h-tag { color: var(--gold); }
+.heard.green .h-quote { color: rgba(255,255,255,0.94); }
+.heard.green .h-attr { color: rgba(245,239,224,0.55); }
 
 /* Out-of-theme placeholder for stats / facts that need user verification */
 .stat-needed { background: rgba(255,120,40,0.16); color: #B25410; padding: 0 5px; border-radius: 3px; font-weight: 600; outline: 1px dashed #B25410; outline-offset: 1px; }
 
-/* ttbl-bar 2-column variant (slide 03 problem-tie-back) */
-.ttbl-bar.fix .tb-hd { grid-template-columns: 200px 1fr; }
-.ttbl-bar.fix .tb-row { grid-template-columns: 200px 1fr; }
-.ttbl-bar.fix .tb-cell:nth-child(2) { border-right: none; }
+/* ttbl-bar 2-column variant (slide 03 problem-tie-back).
+   Design C: full-grid hairlines, tinted label column, outer green border. */
+.ttbl-bar.fix {
+  border: 1px solid rgba(19,79,52,0.28);
+  overflow: hidden;
+}
+.ttbl-bar.fix .tb-hd {
+  grid-template-columns: 200px 1fr;
+  background: rgba(19,79,52,0.06);
+  border-bottom: 1.5px solid rgba(19,79,52,0.28);
+  padding: 0;
+}
+.ttbl-bar.fix .tb-hd span {
+  padding: 8px 14px;
+  font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .17em;
+  color: var(--green);
+}
+.ttbl-bar.fix .tb-hd span:first-child {
+  color: var(--muted);
+  border-right: 1px solid rgba(19,79,52,0.18);
+}
+.ttbl-bar.fix .tb-row {
+  grid-template-columns: 200px 1fr;
+  border-bottom: 1px solid rgba(19,79,52,0.09);
+}
+.ttbl-bar.fix .tb-row:last-child { border-bottom: none; }
+.ttbl-bar.fix .tb-row:nth-child(n) .tb-label {
+  background: rgba(19,79,52,0.035);
+  border-left: none;
+  border-right: 1px solid rgba(19,79,52,0.18);
+  padding: 11px 14px;
+}
+.ttbl-bar.fix .tb-num { color: rgba(19,79,52,0.45); }
+.ttbl-bar.fix .tb-txt { font-size: 13.5px; color: var(--ink); }
+.ttbl-bar.fix .tb-cell {
+  padding: 11px 14px;
+  font-size: 11.5px; line-height: 1.6;
+  color: var(--ink);
+  border-right: none;
+}
+
+/* Audience table (.atbl) — slide 01: row label + two audience columns.
+   Design C: full-grid hairlines, tinted label column, outer green border. */
+.atbl {
+  display: grid; grid-template-columns: 132px 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid rgba(19,79,52,0.28);
+  font-family: var(--font-sans);
+}
+.atbl .th {
+  padding: 8px 14px;
+  font-size: 9px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .17em;
+  background: rgba(19,79,52,0.06);
+  border-bottom: 1.5px solid rgba(19,79,52,0.28);
+  display: flex; align-items: center;
+}
+.atbl .th.corner { color: var(--muted); border-right: 1px solid rgba(19,79,52,0.18); }
+.atbl .th.emp    { color: var(--green); border-right: 1px solid rgba(19,79,52,0.07); }
+.atbl .th.hr     { color: var(--gold-deep); }
+.atbl .rowlbl {
+  padding: 11px 14px;
+  font-family: var(--font-serif); font-size: 13.5px; font-weight: 500;
+  color: var(--ink); letter-spacing: -.01em;
+  background: rgba(19,79,52,0.035);
+  border-right: 1px solid rgba(19,79,52,0.18);
+  border-top: 1px solid rgba(19,79,52,0.09);
+  display: flex; align-items: flex-start;
+}
+.atbl .cell {
+  padding: 11px 14px;
+  font-size: 11.5px; line-height: 1.6; color: var(--muted);
+  background: #fff;
+  border-top: 1px solid rgba(19,79,52,0.09);
+}
+.atbl .cell:nth-of-type(3n+2) { border-right: 1px solid rgba(19,79,52,0.09); }
+.atbl .th + .rowlbl,
+.atbl .th + .rowlbl + .cell,
+.atbl .th + .rowlbl + .cell + .cell { border-top: none; }
 
 /* HRIS vertical tile column (slide 04 — left column of integration visual) */
 .hris-col { display: flex; flex-direction: column; gap: 6px; flex-shrink: 0; width: 132px; }
 .hris-tile { background: #fff; border: 1px solid var(--r1); border-radius: 6px; padding: 8px 10px; display: flex; align-items: center; gap: 8px; font-size: 11.5px; font-weight: 600; color: var(--ink); }
 .hris-mark { width: 18px; height: 18px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-family: var(--font-serif); font-size: 10px; font-weight: 700; color: #fff; flex-shrink: 0; }
-.hris-link { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 14px; gap: 4px; flex-shrink: 0; align-self: stretch; }
+.hris-link { display: flex; flex-direction: row; align-items: center; justify-content: center; padding: 0 12px; gap: 6px; flex-shrink: 0; align-self: center; }
 .hris-link .dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.6; }
 .hris-link .dot.bright { opacity: 1; }
+
+/* Employee list (slide 04 HR dashboard demo) */
+.emp-list { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+.emp-list th { text-align: left; font-size: 8.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; padding: 5px 8px; border-bottom: 1px solid var(--r1); }
+.emp-list th.nr { text-align: right; }
+.emp-list td { padding: 6px 8px; border-bottom: 1px solid rgba(19,79,52,0.06); color: var(--ink); vertical-align: middle; }
+.emp-list td.nr { text-align: right; font-variant-numeric: tabular-nums; }
+.emp-list tr:last-child td { border-bottom: 0; }
+.emp-list tr.emp-new { background: rgba(201,162,39,0.12); }
+.emp-list tr.emp-new td { font-weight: 500; }
+.emp-av { display: inline-flex; width: 18px; height: 18px; border-radius: 50%; background: var(--green); color: #F5F5F2; font-family: var(--font-serif); font-size: 9px; font-weight: 600; align-items: center; justify-content: center; margin-right: 7px; vertical-align: middle; }
+.emp-list tr.emp-new .emp-av { background: var(--gold); color: #3d2710; }
+.emp-pill { display: inline-block; font-size: 8.5px; font-weight: 700; padding: 2px 7px; border-radius: 9px; letter-spacing: .04em; text-transform: uppercase; }
+.emp-pill.ok { background: rgba(82,86,80,0.14); color: var(--muted); }
+.emp-pill.new { background: var(--gold); color: #3d2710; }
 
 /* WhatsApp-style notification card + dotted connector (slide 05 onboarding) */
 .wa-notif { background: #fff; border: 1px solid var(--r1); border-radius: 11px; padding: 8px 10px; display: flex; gap: 8px; box-shadow: 0 6px 14px -4px rgba(0,0,0,0.12); align-self: center; max-width: 184px; }

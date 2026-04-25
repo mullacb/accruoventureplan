@@ -19,6 +19,7 @@ Static HTML deck for the IVC (INSEAD Venture Competition) Round 2 pitch. Per-pag
 │   ├── 07-solution-regulatory.html   ← page 7 · "2.5 Regulatory architecture"
 │   ├── 08-solution-competition.html  ← page 8 · "2.6 Competitive landscape"
 │   ├── 15-team.html              ← page 15 · "5.1 Founders and advisor"
+│   ├── _temp/                    ← scratch HTML for brainstorms/comparisons (gitignored, delete after use)
 │   └── Accruo Venture Pitch.html ← combined deck (fetches each slide's .sw block, watches all + CSS)
 ├── index.html                    ← root redirect to the combined deck (for GitHub Pages)
 ├── .nojekyll                     ← REQUIRED for Pages to serve files starting with _
@@ -63,7 +64,7 @@ After that, never run `open` again. Auto-reload handles it.
 - **Read the file first** (always — don't edit blind).
 - **For copy changes**: when the user asks you to revise wording, propose 2-3 options inline in chat with a recommendation, let them pick, then `Edit` the file. Don't pre-emptively rewrite without showing options first; they want to pick the phrasing.
 - **For shared style** (typography, palette, common components): edit `slides/_design-system.css`. Every slide picks it up on next reload.
-- **For slide-specific style**: inline `style="..."` attributes or a per-slide `<style>` block at the top of the file. Don't pollute `_design-system.css` with one-off tweaks.
+- **For slide-specific style**: inline `style="..."` attributes or a per-slide `<style>` block **inside the `.sw` div** (not in `<head>` — the combined deck only stitches `.sw` content, so styles in `<head>` are dropped on the way in). Don't pollute `_design-system.css` with one-off tweaks.
 - **Edit tool > Write** for surgical changes. Use Write for new files or full rewrites.
 - The user prefers Irish spelling ("organise", "behaviour", "customise"), avoidance of em dashes, and sentence case throughout. See **Writing style** below.
 
@@ -74,9 +75,38 @@ After that, never run `open` again. Auto-reload handles it.
 - Auto-reload **only works over `http://`**. `file://` strips `Last-Modified` from fetch responses, so the watcher silently never fires. Always serve via the local http.server.
 - If a tab feels stuck after an edit (rare), hard-refresh once (Cmd+Shift+R).
 
-### 4 · When wrapping a unit, commit
+### 4 · Screenshot before reporting any layout change
+
+For any change that re-formats the page (CSS, grid/flex layout, padding, new components, restructured markup, content reorder that shifts heights), capture before + after PNGs via headless Chrome and view both with the `Read` tool before reporting back. CSS placement bugs only surface visually — reading code won't catch them.
+
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --headless --disable-gpu --hide-scrollbars \
+  --force-device-scale-factor=2 \
+  --screenshot=/tmp/slideNN-after.png \
+  --window-size=820,1180 \
+  "http://localhost:8090/NN-slide-name.html"
+```
+
+`--force-device-scale-factor=2` is required, otherwise the PNG is too small to read type and spacing. The per-page URL is faster than the combined deck for evaluating one slide. Skip the screenshot step for pure single-word copy edits where text length doesn't change.
+
+Evaluate the after shot against intent: (1) nothing overflows the slide, (2) the change matches what was proposed, (3) hierarchy reads as intended, (4) no element landed in an unexpected grid cell or stacking order. If any of those fail, fix and re-screenshot before reporting.
+
+### 5 · When wrapping a unit, commit
 
 See **Commit policy** below.
+
+---
+
+## Scratch files for brainstorms and comparisons
+
+When the user asks for layout brainstorms, format options, side-by-side comparisons, or anything that is **exploration rather than a real slide**, the file goes in `slides/_temp/`. Conventions:
+
+- **Location**: `slides/_temp/<descriptive-name>.html`. Never write a brainstorm at `slides/01-foo-brainstorm.html`. The `_temp/` subdir is gitignored, so it won't pollute the repo or the deployed Pages site.
+- **CSS and reload script**: scratch files reference the design system one level up: `<link rel="stylesheet" href="../_design-system.css">` and `<script src="../_reload.js"></script>`.
+- **URL on the dev server**: `http://localhost:8090/_temp/<file>.html`. The http server serves the whole `slides/` dir, so the `_temp/` subpath just works.
+- **Lifecycle**: a brainstorm file is short-lived. Once the user picks a variant and it's wired into the real slide, **delete the brainstorm file**. Don't let stale exploration HTML accumulate. If the user moves on without explicitly saying "delete it", offer to clean up.
+- **Don't modify production slides while iterating**. Brainstorm in `_temp/`, then make the actual change to the real slide in one focused edit.
 
 ---
 

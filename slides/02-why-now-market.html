@@ -12,6 +12,30 @@
 <div class="document">
 
 <div class="sw">
+  <style>
+    .moment-grid.policy { grid-template-columns: 1fr; gap: 12px; }
+    .moment-grid.policy .moment {
+      display: block;
+      padding: 14px 22px 16px;
+      background: #FFFFFF;
+      border-left: 4px solid var(--green);
+      border-radius: 3px;
+    }
+    .moment-grid.policy .m-date {
+      display: inline-block;
+      background: rgba(19, 79, 52, 0.09);
+      color: var(--green);
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      padding: 4px 10px 5px;
+      border-radius: 3px;
+      margin-bottom: 8px;
+    }
+    .moment-grid.policy .m-head { font-size: 17px; margin-bottom: 6px; }
+  </style>
   <div class="sm">02 &middot; Why Now &amp; Market <em>The window, and the prize</em></div>
   <div class="slide surf">
     <div class="si fc">
@@ -19,48 +43,48 @@
       <div class="sh" style="margin-bottom: 14px;">
         <div class="sh-left">
           <div class="eyebrow">1.2 &middot; Why now</div>
-          <h3 class="t-sub">The window just opened. <em>Two policy moments, six months apart.</em></h3>
+          <h3 class="t-sub">Two reforms, six months apart. <em>Demand in Ireland, a passport across Europe.</em></h3>
         </div>
       </div>
 
-      <div class="moment-grid">
+      <div class="moment-grid policy">
+        <div class="moment">
+          <div class="m-date">20 November 2025</div>
+          <h4 class="m-head">EU announces reforms to the EuroPension.</h4>
+          <p class="m-body">EuroPension is a standardised retirement account. Any EU citizen can open one, and any firm licensed in one member state can sell it to customers in any other. <strong>One product, one licence, 27 markets, 450 million savers.</strong> Launched in 2019, it's being reformed to make it an even more competitive product.<sup class="fn">6</sup> <strong>Even unreformed</strong>, the account is usable today. Ireland, France, Italy and others already permit direct employer contributions, making it viable across three large workplace savings markets.</p>
+        </div>
         <div class="moment">
           <div class="m-date">1 January 2026</div>
           <h4 class="m-head">Auto-enrolment launched in Ireland.</h4>
-          <p class="m-body">Ireland's new auto-enrolment scheme brings <strong>800,000 workers</strong> into a pension for the first time.<sup class="fn">6</sup> Employers now contribute by default, and a state-led awareness campaign is bringing pensions into every Irish workplace conversation. The question is no longer <em>whether</em> to offer a pension, but <em>which platform</em> to offer.</p>
-        </div>
-        <div class="moment">
-          <div class="m-date">20 November 2025</div>
-          <h4 class="m-head">The EU reformed its EuroPension product.</h4>
-          <p class="m-body">EuroPension accounts (the Pan-European Personal Pension, or PEPP) are a standardised individual pension, portable across the EU under <strong>a single regulatory licence</strong>. The Commission's reforms scrap mandatory advice, require tax parity with domestic products, and open EuroPension for use in workplace auto-enrolment.<sup class="fn">7</sup> A firm licensed in Ireland today can passport into every EU market. <strong>And even if the reforms stall</strong>, Ireland, France, and Italy already permit employers to contribute directly into an employee's individual pension account, making Accruo's workplace model viable today.</p>
+          <p class="m-body">Ireland's new auto-enrolment scheme brings <strong>800,000 workers</strong> into a pension for the first time.<sup class="fn">7</sup> Employers now contribute by default, and a state-led awareness campaign is bringing pensions into every Irish workplace conversation. The question is no longer <em>whether</em> to offer a pension, but <em>which platform</em> to offer.</p>
         </div>
       </div>
 
       <div class="sect-h">
         <div class="eyebrow">1.3 &middot; Market</div>
-        <h3 class="t-sub">&euro;167bn in Ireland. <em>EuroPension-portable across Europe.</em></h3>
+        <h3 class="t-sub">&euro;167bn in Ireland. <em>Trillion euro market across Europe.</em></h3>
       </div>
 
-      <table class="dt">
+      <table class="dt market">
         <thead>
           <tr>
-            <th>Ireland &middot; supplementary pension market<sup class="fn">8</sup></th>
-            <th class="nr">Members</th>
-            <th class="nr">Annual flow</th>
-            <th class="nr">Market AUM</th>
-            <th class="nr">Fee pool @ 1%</th>
+            <th>Ireland &middot; pension market<sup class="fn">8</sup></th>
+            <th class="nr">Savers</th>
+            <th class="nr">Annual contributions</th>
+            <th class="nr">Total savings</th>
+            <th class="nr">Management fees</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Corporate</strong> (B2B) &middot; master trust, DC, auto-enrolment</td>
+            <td><strong>Corporate</strong> (B2B)</td>
             <td class="nr">2.08M</td>
             <td class="nr">&euro;8.65bn</td>
             <td class="nr">&euro;145.7bn</td>
             <td class="nr">&euro;1.46bn</td>
           </tr>
           <tr>
-            <td><strong>Individual</strong> (B2C) &middot; Standard + Non-Standard PRSA</td>
+            <td><strong>Individual</strong> (B2C)</td>
             <td class="nr">258k</td>
             <td class="nr">&euro;2.60bn</td>
             <td class="nr">&euro;21.5bn</td>
@@ -76,12 +100,14 @@
         </tbody>
       </table>
 
+      <p class="t-xs" style="margin-top: 6px; margin-bottom: 12px;">Management fees calculated at a blended <strong>1%</strong>, a conservative estimate of fees in Ireland.</p>
+
       <div class="market-row">
         <div class="growth-note">
-          <strong>The market compounds.</strong> Irish pension AUM grows roughly <strong>10% a year</strong> from contributions and returns. The individual PRSA segment alone more than doubled between 2019 and 2024, from &euro;7.3bn to &euro;18.3bn.<sup class="fn">9</sup> Auto-enrolment adds 800,000 contributors on top.
+          <strong>The market compounds.</strong> Irish pension assets under management (AUM) grows over <strong>10% a year</strong> from contributions and investment returns. The individual PRSA segment alone more than doubled between 2019 and 2024, from &euro;7.3bn to &euro;18.3bn.<sup class="fn">9</sup> Auto-enrolment adds 800,000 contributors on top.
         </div>
         <div class="share-card">
-          <div class="sc-tag">What 1% share means</div>
+          <div class="sc-tag">What 1% of the Irish market means</div>
           <div class="sc-fig">&euro;16.7M</div>
           <div class="sc-body">in annual revenue at today's market size, at a 1% blended fee. The number grows with the market.</div>
         </div>
@@ -90,8 +116,8 @@
       <p class="expansion"><strong>Then the licence travels.</strong> EuroPension accounts make the same product portable across the EU, and no provider has yet brought them to France or Italy. France's PER market grew <strong>19% in the year to Q3 2025, reaching &euro;141bn</strong> across 12.7 million holders.<sup class="fn">10</sup> Italy, which already runs auto-enrolment, holds <strong>&euro;243bn across 10 million workers</strong>.<sup class="fn">11</sup> The platform needs only a consistent slice in each country.</p>
 
       <div class="footnotes">
-        <div class="fn-row"><sup>6</sup><span>Irish Dept of Social Protection; National Pension Helpline.</span></div>
-        <div class="fn-row"><sup>7</sup><span>EC Supplementary Pensions Package, 20 Nov 2025.</span></div>
+        <div class="fn-row"><sup>6</sup><span>EC Supplementary Pensions Package, 20 Nov 2025.</span></div>
+        <div class="fn-row"><sup>7</sup><span>Irish Dept of Social Protection; National Pension Helpline.</span></div>
         <div class="fn-row"><sup>8</sup><span>Pensions Authority of Ireland; CSO 2024.</span></div>
         <div class="fn-row"><sup>9</sup><span>CSO Ireland, PRSA quarterly data.</span></div>
         <div class="fn-row"><sup>10</sup><span>France Assurances, Q3 2025 PER report.</span></div>

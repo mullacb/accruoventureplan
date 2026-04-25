@@ -18,5 +18,8 @@ tools/
 # Local server logs
 /tmp/*.log
 
+# Slide-build scratch — exploration HTML, comparison pages, brainstorm decks
+slides/_temp/
+
 # Claude Code metadata
 .claude/
