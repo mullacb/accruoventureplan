@@ -52,7 +52,7 @@ html, body {
 }
 .slide::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 1.5px; background: rgba(19,79,52,0.6); z-index: 10; }
 .slide.cream { background: #FFFFFF; }
-.slide.surf  { background: var(--cream-light); }
+.slide.surf  { background: #FFFFFF; }
 
 .si { padding: var(--m); padding-bottom: calc(var(--m) + 30px); height: 100%; box-sizing: border-box; display: flex; flex-direction: column; }
 .fc { display: flex; flex-direction: column; }
