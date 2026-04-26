@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Accruo · 12 · Path to launch</title>
+<title>Accruo · 12 · The first year</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -12,9 +12,91 @@
 <div class="document">
 
 <div class="sw">
-  <div class="sm">12 &middot; Execution <em>Path to launch</em></div>
+  <style>
+    /* Two-column body: timeline + sidecard */
+    .body-row { display: grid; grid-template-columns: 1fr 232px; gap: 22px; flex: 1; min-height: 0; }
+
+    /* Vertical timeline (left column) */
+    .vtl { position: relative; padding-left: 96px; }
+    .vtl::before {
+      content: ""; position: absolute;
+      left: 76px; top: 12px; bottom: 0;
+      width: 2px; background: var(--green);
+    }
+    .vtl-row { position: relative; padding: 0 0 18px; }
+    .vtl-row:last-child { padding-bottom: 0; }
+    .vtl-date {
+      position: absolute; left: -96px; top: 4px; width: 70px;
+      text-align: right;
+      font-family: var(--font-serif); font-size: 15px; font-weight: 500;
+      color: var(--ink); letter-spacing: -.01em; line-height: 1.05;
+    }
+    .vtl-date small {
+      display: block; font-size: 9px; color: var(--muted);
+      font-family: var(--font-sans); text-transform: uppercase;
+      letter-spacing: .12em; font-weight: 600; margin-top: 2px;
+    }
+    .vtl-dot {
+      position: absolute; left: -23px; top: 9px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--green); border: 2.5px solid var(--cream-light);
+      box-shadow: 0 0 0 1.5px var(--green);
+    }
+    .vtl-content { padding-left: 8px; }
+    .vtl-head {
+      font-family: var(--font-serif); font-size: 14px; font-weight: 500;
+      color: var(--ink); margin-bottom: 5px; line-height: 1.2;
+      letter-spacing: -.01em;
+    }
+    .vtl-tracks { display: flex; flex-direction: column; gap: 4px; }
+    .vtl-track {
+      font-size: 10.5px; line-height: 1.45; color: var(--ink);
+      display: grid; grid-template-columns: 64px 1fr; gap: 8px;
+    }
+    .vtl-track-lbl {
+      font-size: 8.5px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .12em;
+      padding-top: 2px;
+    }
+    .vtl-track.reg .vtl-track-lbl { color: var(--green); }
+    .vtl-track.team .vtl-track-lbl { color: var(--gold-deep); }
+    .vtl-track.prod .vtl-track-lbl { color: var(--muted); }
+
+    /* Sidecard (right column) */
+    .sidecard {
+      background: rgba(19,79,52,0.04);
+      border-left: 3px solid var(--green);
+      padding: 12px 14px;
+    }
+    .sidecard + .sidecard { margin-top: 12px; }
+    .sidecard.gold { background: rgba(201,162,39,0.08); border-left-color: var(--gold); }
+    .sc-tag {
+      font-size: 9px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .14em; color: var(--green); margin-bottom: 6px;
+    }
+    .sidecard.gold .sc-tag { color: var(--gold-deep); }
+    .sc-title {
+      font-family: var(--font-serif); font-size: 14px; font-weight: 500;
+      color: var(--ink); margin-bottom: 8px; letter-spacing: -.01em;
+      line-height: 1.2;
+    }
+    .pcf-row {
+      display: flex; justify-content: space-between;
+      font-size: 10.5px; color: var(--ink); padding: 3px 0;
+      border-bottom: 1px solid rgba(19,79,52,0.08);
+    }
+    .pcf-row:last-of-type { border-bottom: 0; }
+    .pcf-row.total {
+      font-weight: 700; padding-top: 6px; margin-top: 4px;
+      border-top: 1.5px solid var(--green); border-bottom: 0;
+    }
+    .pcf-row .v { font-family: var(--font-serif); font-weight: 500; font-variant-numeric: tabular-nums; }
+    .sc-body { font-size: 10.5px; line-height: 1.5; color: var(--ink); }
+    .sc-body strong { color: var(--gold-deep); font-weight: 600; }
+  </style>
+  <div class="sm">12 &middot; Execution <em>The first year</em></div>
   <div class="slide surf">
-    <div class="si fc">
+    <div class="si fc" style="padding-top: 26px;">
 
       <div class="section-intro">
         <div class="si-num">4</div>
@@ -25,76 +107,95 @@
       <div class="sh" style="border-top: none;">
         <div class="sh-left">
           <div class="eyebrow">4.1 &middot; Path to launch</div>
-          <h2 class="t-title">Twelve months from filing to first revenue. <em>Three tracks, one launch date.</em></h2>
+          <h2 class="t-title">The first year. <em>Getting a licence.</em></h2>
         </div>
       </div>
 
-      <p class="t-body" style="margin-bottom: 14px;">Accruo's path to first revenue is anchored to a single <strong>July 2027 launch</strong>, served by three concurrent workstreams. A regulatory track delivers MiFID Class 3 and IIA authorisation. A partner track secures the custody, fund, and insurance counterparties Accruo resells. A team and product track delivers the working platform with a closed pilot ahead of public launch. The capital ask in the previous slide funds all three.</p>
+      <p class="t-body" style="margin-bottom: 14px;">This is the regulatory build year, focused on acquiring the <strong>MiFID Class 3 licence</strong>. The Central Bank of Ireland targets a six-month decision from submission, but the full path including pre-application engagement, document preparation, and review is around <strong>327 days end-to-end</strong>. Everything else, the platform build, the partner stack, the team, has to be sequenced around that clock.</p>
 
-      <div class="sect-h">
-        <div class="eyebrow">Roadmap &middot; H2 2026 to launch</div>
-      </div>
+      <div class="body-row">
 
-      <table class="dt" style="margin-bottom: 16px;">
-        <thead>
-          <tr>
-            <th style="width: 18%;">Track</th>
-            <th style="width: 20%;">Q3 2026</th>
-            <th style="width: 22%;">Q4 2026</th>
-            <th style="width: 20%;">Q1&ndash;Q2 2027</th>
-            <th style="width: 20%;">Q3 2027</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Regulatory</strong></td>
-            <td>CBI Innovation Hub engagement; preliminary application advice</td>
-            <td>IIA application submitted; MiFID Key Facts Document filed; <strong>MiFID Class 3 application</strong> submitted</td>
-            <td>CBI review in progress; PCF interviews; ongoing correspondence</td>
-            <td><strong>Authorisation;</strong> commercial activity commences</td>
-          </tr>
-          <tr>
-            <td><strong>Partners</strong></td>
-            <td>Custody shortlist (State Street, Apex, Upvest); fund-partner exploratory (BlackRock, Vanguard, State Street)</td>
-            <td>Term sheets negotiated; insurance carrier conversations (Irish Life, Laya)</td>
-            <td>Custody and fund agreements signed; insurance reseller terms agreed; integrations into pilot environment</td>
-            <td>Production integrations live; <strong>first transaction ready</strong></td>
-          </tr>
-          <tr>
-            <td><strong>Team and product</strong></td>
-            <td>Founders full-time; INED and outsourced PCFs (Compliance, Risk, Internal Audit, DPO, Co-Sec) engaged</td>
-            <td>MVP build continues; closed pilot with five lighthouse employer cohort; waitlist build</td>
-            <td>First Account Executive joins (Jan 2027); B2B outbound to pilot graduates; B2C marketing infrastructure built</td>
-            <td><strong>Public launch;</strong> B2C acquisition switched on; second AE hire</td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="vtl">
+          <div class="vtl-row">
+            <div class="vtl-date">Q3 2026<small>Foundations</small></div>
+            <div class="vtl-dot"></div>
+            <div class="vtl-content">
+              <div class="vtl-head">Pre-application engagement</div>
+              <div class="vtl-tracks">
+                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>Engage CBI Innovation Hub (Jun&ndash;Jul) for preliminary advice. Affordable legal counsel engaged. MiFID conversations formally initiated in September with the Preliminary Meeting and Key Facts Document submission.</div>
+                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>Search begins for fractional Pre-Approved Control Functions (sidecard). Cofounders fill several PCF roles themselves.</div>
+                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Proof of concept vibe-coded by founders; search for lead software engineer begins.</div>
+              </div>
+            </div>
+          </div>
 
-      <div class="sect-h">
-        <div class="eyebrow">Risk mitigation &middot; what protects the date</div>
-      </div>
+          <div class="vtl-row">
+            <div class="vtl-date">Q4 2026<small>Filings</small></div>
+            <div class="vtl-dot"></div>
+            <div class="vtl-content">
+              <div class="vtl-head">Applications submitted</div>
+              <div class="vtl-tracks">
+                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>Full MiFID Class 3 application filed (Oct), starting the six-month review clock. IIA application submitted in parallel. Revenue and Pensions Authority engaged on tax and product approvals.</div>
+                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>All PCF roles filled fractionally. INED confirmed via the founders' network. &euro;125k regulatory capital placed in segregated account.</div>
+                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Lead engineer hired; MVP build begins. Five-employer lighthouse cohort signed to closed pilot.</div>
+              </div>
+            </div>
+          </div>
 
-      <div class="moment-grid three" style="margin-top: 8px;">
-        <div class="moment">
-          <div class="m-tag">01 &middot; Tied-agent backstop</div>
-          <h4 class="m-head">Commercial activity even if MiFID slips.</h4>
-          <p class="m-body">Preliminary discussions with Irish licensees to operate as a <strong>tied agent</strong> if the MiFID timeline slips beyond Q2 2027. Accruo would distribute under another firm's licence on day one, transitioning to its own authorisation when granted. Preserves go-to-market momentum without idle burn.</p>
+          <div class="vtl-row">
+            <div class="vtl-date">Q1 2027<small>Review</small></div>
+            <div class="vtl-dot"></div>
+            <div class="vtl-content">
+              <div class="vtl-head">CBI review active</div>
+              <div class="vtl-tracks">
+                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>CBI six-month review in flight. PCF interviews held; ongoing correspondence with the case officer. IIA expected to clear ahead of MiFID.</div>
+                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>First Account Executive joins (January 2027) to begin lining up the Y2 sales pipeline. Fractional marketing engaged.</div>
+                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>MVP feature-complete on the B2B side. Custody and fund integrations live in the pilot environment.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vtl-row">
+            <div class="vtl-date">Q2 2027<small>Pre-launch</small></div>
+            <div class="vtl-dot"></div>
+            <div class="vtl-content">
+              <div class="vtl-head">Authorisation expected</div>
+              <div class="vtl-tracks">
+                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>CBI authorisation expected at the end of the six-month review. Final PCF approvals signed off. Revenue and Pensions Authority approvals complete.</div>
+                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>Sales motion documented and ready. Customer-support function stood up. Second AE scoped for post-launch hire.</div>
+                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Closed pilot live with the five-employer lighthouse cohort. Production environment hardening. KPI: 500+ waitlist signups.</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="moment">
-          <div class="m-tag">02 &middot; Outsourced PCFs</div>
-          <h4 class="m-head">Three lines of defence without overhiring.</h4>
-          <p class="m-body">The CBI's three-lines-of-defence requirement is met through <strong>fractional Compliance, Risk, Internal Audit, DPO and Co-Sec</strong>, not full hires. Total Y1 outsourced regulatory cost of approximately <strong>&euro;250&ndash;450k</strong> sits inside the regulatory line of the previous slide.</p>
+
+        <div>
+          <div class="sidecard">
+            <div class="sc-tag">Pre-Approved Control Functions</div>
+            <div class="sc-title">Fractional, not full hires</div>
+            <div class="pcf-row"><span>External Chair</span><span class="v">&euro;40k</span></div>
+            <div class="pcf-row"><span>Compliance Officer</span><span class="v">&euro;60k</span></div>
+            <div class="pcf-row"><span>Risk Officer</span><span class="v">&euro;40k</span></div>
+            <div class="pcf-row"><span>Internal Audit</span><span class="v">&euro;35k</span></div>
+            <div class="pcf-row"><span>Data Protection</span><span class="v">&euro;15k</span></div>
+            <div class="pcf-row"><span>Company Secretary</span><span class="v">&euro;7.5k</span></div>
+            <div class="pcf-row"><span>Tax Advisory</span><span class="v">&euro;10k</span></div>
+            <div class="pcf-row total"><span>Y2+ run-rate</span><span class="v">&euro;232.5k</span></div>
+            <div class="pcf-row"><span>Y1 (partial)</span><span class="v">&euro;85.6k</span></div>
+          </div>
+
+          <div class="sidecard gold">
+            <div class="sc-tag">Backstop</div>
+            <div class="sc-title">Start as a broker</div>
+            <div class="sc-body">In addition to the MiFID licence, we're pursuing an <strong>Investment Intermediary Authorisation</strong> to resell health and life insurance products. The licence theoretically permits us to sell pensions too, and the bar to acquire it is materially lower than MiFID. If our timeline slips, we integrate existing pension providers and operate as a digital broker to generate revenue.</div>
+          </div>
         </div>
-        <div class="moment">
-          <div class="m-tag">03 &middot; INED via network</div>
-          <h4 class="m-head">No single point of failure.</h4>
-          <p class="m-body">The required <strong>independent non-executive director</strong> is identified through the founders' and advisor's professional network, with two named candidates already in conversation. Not contingent on a single appointment.</p>
-        </div>
+
       </div>
 
     </div>
     <div class="sf">
-      <span class="sf-doc">Accruo &middot; Path to launch</span>
+      <span class="sf-doc">Accruo &middot; The first year</span>
       <span class="sf-pg">12</span>
     </div>
   </div>
