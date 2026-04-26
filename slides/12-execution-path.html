@@ -13,86 +13,117 @@
 
 <div class="sw">
   <style>
-    /* Two-column body: timeline + sidecard */
-    .body-row { display: grid; grid-template-columns: 1fr 232px; gap: 22px; flex: 1; min-height: 0; }
+    /* In-slide section divider with eyebrow on the right (compact) */
+    .ss-h {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding-bottom: 6px; border-bottom: 1px solid var(--r1);
+      margin: 14px 0 10px;
+      flex-shrink: 0;
+    }
+    .ss-h .ss-eyebrow {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .16em; color: var(--green);
+    }
+    .ss-h .ss-meta {
+      font-family: var(--font-serif); font-size: 12px; color: var(--muted);
+    }
+    .ss-h .ss-meta strong { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
 
-    /* Vertical timeline (left column) */
-    .vtl { position: relative; padding-left: 96px; }
-    .vtl::before {
+    /* Track 1: compressed horizontal timeline */
+    .htl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin: 0 0 6px; }
+    .htl::before {
       content: ""; position: absolute;
-      left: 76px; top: 12px; bottom: 0;
-      width: 2px; background: var(--green);
+      left: 6px; right: 8px; top: 5px;
+      height: 2px;
+      background: linear-gradient(to right,
+        var(--green) 0%,
+        var(--green) 78%,
+        rgba(19, 79, 52, 0) 100%);
     }
-    .vtl-row { position: relative; padding: 0 0 18px; }
-    .vtl-row:last-child { padding-bottom: 0; }
-    .vtl-date {
-      position: absolute; left: -96px; top: 4px; width: 70px;
-      text-align: right;
-      font-family: var(--font-serif); font-size: 15px; font-weight: 500;
-      color: var(--ink); letter-spacing: -.01em; line-height: 1.05;
-    }
-    .vtl-date small {
-      display: block; font-size: 9px; color: var(--muted);
-      font-family: var(--font-sans); text-transform: uppercase;
-      letter-spacing: .12em; font-weight: 600; margin-top: 2px;
-    }
-    .vtl-dot {
-      position: absolute; left: -23px; top: 9px;
-      width: 11px; height: 11px; border-radius: 50%;
-      background: var(--green); border: 2.5px solid var(--cream-light);
+    .htl-step { position: relative; padding: 0 12px 0 0; }
+    .htl-step:last-child { padding-right: 0; }
+    .htl-dot {
+      position: relative; z-index: 2;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--green); border: 2.5px solid #fff;
       box-shadow: 0 0 0 1.5px var(--green);
+      margin-bottom: 8px;
     }
-    .vtl-content { padding-left: 8px; }
-    .vtl-head {
+    .htl-q {
       font-family: var(--font-serif); font-size: 14px; font-weight: 500;
-      color: var(--ink); margin-bottom: 5px; line-height: 1.2;
-      letter-spacing: -.01em;
+      color: var(--ink); letter-spacing: -.01em; line-height: 1.1;
     }
-    .vtl-tracks { display: flex; flex-direction: column; gap: 4px; }
-    .vtl-track {
-      font-size: 10.5px; line-height: 1.45; color: var(--ink);
-      display: grid; grid-template-columns: 64px 1fr; gap: 8px;
+    .htl-q small {
+      display: block; font-size: 9px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .14em;
+      color: var(--muted); margin-top: 3px;
     }
-    .vtl-track-lbl {
-      font-size: 8.5px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: .12em;
-      padding-top: 2px;
+    .htl-head {
+      font-family: var(--font-serif); font-size: 12.5px; font-weight: 500;
+      color: var(--green); margin-top: 6px; line-height: 1.25;
+      letter-spacing: -.005em;
     }
-    .vtl-track.reg .vtl-track-lbl { color: var(--green); }
-    .vtl-track.team .vtl-track-lbl { color: var(--gold-deep); }
-    .vtl-track.prod .vtl-track-lbl { color: var(--muted); }
+    .htl-body {
+      font-size: 11.5px; line-height: 1.45; color: var(--ink);
+      margin-top: 4px;
+    }
 
-    /* Sidecard (right column) */
-    .sidecard {
-      background: rgba(19,79,52,0.04);
-      border-left: 3px solid var(--green);
-      padding: 12px 14px;
+    /* Track 2: cost table with two columns of line items */
+    .cost-2col {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0 28px; padding: 4px 0 0;
     }
-    .sidecard + .sidecard { margin-top: 12px; }
-    .sidecard.gold { background: rgba(201,162,39,0.08); border-left-color: var(--gold); }
-    .sc-tag {
-      font-size: 9px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .14em; color: var(--green); margin-bottom: 6px;
-    }
-    .sidecard.gold .sc-tag { color: var(--gold-deep); }
-    .sc-title {
-      font-family: var(--font-serif); font-size: 14px; font-weight: 500;
-      color: var(--ink); margin-bottom: 8px; letter-spacing: -.01em;
-      line-height: 1.2;
-    }
-    .pcf-row {
-      display: flex; justify-content: space-between;
-      font-size: 10.5px; color: var(--ink); padding: 3px 0;
+    .cost-row {
+      display: grid; grid-template-columns: 1fr auto; gap: 12px;
+      padding: 5px 0; font-size: 12px; line-height: 1.4;
+      color: var(--ink);
       border-bottom: 1px solid rgba(19,79,52,0.08);
     }
-    .pcf-row:last-of-type { border-bottom: 0; }
-    .pcf-row.total {
-      font-weight: 700; padding-top: 6px; margin-top: 4px;
-      border-top: 1.5px solid var(--green); border-bottom: 0;
+    .cost-row:last-child { border-bottom: 0; }
+    .cost-row .v {
+      font-family: var(--font-serif); font-weight: 500;
+      font-variant-numeric: tabular-nums; color: var(--ink);
     }
-    .pcf-row .v { font-family: var(--font-serif); font-weight: 500; font-variant-numeric: tabular-nums; }
-    .sc-body { font-size: 10.5px; line-height: 1.5; color: var(--ink); }
-    .sc-body strong { color: var(--gold-deep); font-weight: 600; }
+    .cost-row.total {
+      border-top: 1.5px solid var(--green); border-bottom: 0;
+      padding-top: 7px; margin-top: 4px;
+      font-weight: 700;
+    }
+    .cost-row.total .v { color: var(--green); font-weight: 700; }
+    .cost-foot {
+      font-size: 10.5px; color: var(--muted); line-height: 1.45;
+      margin-top: 8px;
+    }
+    .cost-foot strong { color: var(--ink); font-weight: 600; }
+
+    /* Track 3: two backstop cards */
+    .backstops-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 4px; }
+    .bcard {
+      padding: 12px 14px;
+      display: flex; flex-direction: column; gap: 5px;
+    }
+    .bcard.green {
+      background: rgba(19,79,52,0.05);
+      border-left: 3px solid var(--green);
+    }
+    .bcard.gold {
+      background: rgba(201,162,39,0.08);
+      border-left: 3px solid var(--gold);
+    }
+    .bcard .b-tag {
+      font-size: 9.5px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .16em; color: var(--green);
+    }
+    .bcard.gold .b-tag { color: var(--gold-deep); }
+    .bcard .b-title {
+      font-family: var(--font-serif); font-size: 15px; font-weight: 500;
+      color: var(--ink); letter-spacing: -.01em; line-height: 1.2;
+    }
+    .bcard .b-body {
+      font-size: 11.5px; line-height: 1.5; color: var(--ink);
+    }
+    .bcard .b-body strong { color: var(--green); font-weight: 600; }
+    .bcard.gold .b-body strong { color: var(--gold-deep); }
   </style>
   <div class="sm">12 &middot; Execution <em>The first year</em></div>
   <div class="slide surf">
@@ -111,86 +142,75 @@
         </div>
       </div>
 
-      <p class="t-body" style="margin-bottom: 14px;">This is the regulatory build year, focused on acquiring the <strong>MiFID Class 3 licence</strong>. The Central Bank of Ireland targets a six-month decision from submission, but the full path including pre-application engagement, document preparation, and review is around <strong>327 days end-to-end</strong>. Everything else, the platform build, the partner stack, the team, has to be sequenced around that clock.</p>
+      <p class="t-body" style="margin-bottom: 4px;">This is the regulatory build year, focused on acquiring two licences in parallel: the <strong>MiFID Class 3 licence</strong> to build the pension, and the less burdensome <strong>Insurance Intermediary Authorisation</strong> to resell health and life insurance. For MiFID, the CBI targets a six-month decision from submission; the full path including pre-application engagement, documents, and review is around <strong>327 days end-to-end</strong>.</p>
 
-      <div class="body-row">
+      <div class="ss-h">
+        <div class="ss-eyebrow">The path</div>
+      </div>
 
-        <div class="vtl">
-          <div class="vtl-row">
-            <div class="vtl-date">Q3 2026<small>Foundations</small></div>
-            <div class="vtl-dot"></div>
-            <div class="vtl-content">
-              <div class="vtl-head">Pre-application engagement</div>
-              <div class="vtl-tracks">
-                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>Engage CBI Innovation Hub (Jun&ndash;Jul) for preliminary advice. Affordable legal counsel engaged. MiFID conversations formally initiated in September with the Preliminary Meeting and Key Facts Document submission.</div>
-                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>Search begins for fractional Pre-Approved Control Functions (sidecard). Cofounders fill several PCF roles themselves.</div>
-                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Proof of concept vibe-coded by founders; search for lead software engineer begins.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="vtl-row">
-            <div class="vtl-date">Q4 2026<small>Filings</small></div>
-            <div class="vtl-dot"></div>
-            <div class="vtl-content">
-              <div class="vtl-head">Applications submitted</div>
-              <div class="vtl-tracks">
-                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>Full MiFID Class 3 application filed (Oct), starting the six-month review clock. IIA application submitted in parallel. Revenue and Pensions Authority engaged on tax and product approvals.</div>
-                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>All PCF roles filled fractionally. INED confirmed via the founders' network. &euro;125k regulatory capital placed in segregated account.</div>
-                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Lead engineer hired; MVP build begins. Five-employer lighthouse cohort signed to closed pilot.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="vtl-row">
-            <div class="vtl-date">Q1 2027<small>Review</small></div>
-            <div class="vtl-dot"></div>
-            <div class="vtl-content">
-              <div class="vtl-head">CBI review active</div>
-              <div class="vtl-tracks">
-                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>CBI six-month review in flight. PCF interviews held; ongoing correspondence with the case officer. IIA expected to clear ahead of MiFID.</div>
-                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>First Account Executive joins (January 2027) to begin lining up the Y2 sales pipeline. Fractional marketing engaged.</div>
-                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>MVP feature-complete on the B2B side. Custody and fund integrations live in the pilot environment.</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="vtl-row">
-            <div class="vtl-date">Q2 2027<small>Pre-launch</small></div>
-            <div class="vtl-dot"></div>
-            <div class="vtl-content">
-              <div class="vtl-head">Authorisation expected</div>
-              <div class="vtl-tracks">
-                <div class="vtl-track reg"><span class="vtl-track-lbl">Regulatory</span>CBI authorisation expected at the end of the six-month review. Final PCF approvals signed off. Revenue and Pensions Authority approvals complete.</div>
-                <div class="vtl-track team"><span class="vtl-track-lbl">Team</span>Sales motion documented and ready. Customer-support function stood up. Second AE scoped for post-launch hire.</div>
-                <div class="vtl-track prod"><span class="vtl-track-lbl">Product</span>Closed pilot live with the five-employer lighthouse cohort. Production environment hardening. KPI: 500+ waitlist signups.</div>
-              </div>
-            </div>
-          </div>
+      <div class="htl">
+        <div class="htl-step">
+          <div class="htl-dot"></div>
+          <div class="htl-q">Q3 2026<small>Foundations</small></div>
+          <div class="htl-head">Pre-application engagement</div>
+          <div class="htl-body">CBI Innovation Hub. Legal counsel engaged. Founders cover several PCFs. Engineer search begins.</div>
         </div>
+        <div class="htl-step">
+          <div class="htl-dot"></div>
+          <div class="htl-q">Q4 2026<small>Filings</small></div>
+          <div class="htl-head">Applications submitted</div>
+          <div class="htl-body">MiFID Class 3 filed; six-month clock starts. IIA in parallel. PCFs filled. &euro;125k regulatory capital placed.</div>
+        </div>
+        <div class="htl-step">
+          <div class="htl-dot"></div>
+          <div class="htl-q">Q1 2027<small>Review</small></div>
+          <div class="htl-head">CBI review active</div>
+          <div class="htl-body">PCF interviews. Lead engineer hired; MVP build. First AE joins. Lighthouse cohort signed.</div>
+        </div>
+        <div class="htl-step">
+          <div class="htl-dot"></div>
+          <div class="htl-q">Q2 2027<small>Pre-launch</small></div>
+          <div class="htl-head">Authorisation expected</div>
+          <div class="htl-body">CBI sign-off. Closed pilot live with the five-employer cohort. 500+ waitlist signups.</div>
+        </div>
+      </div>
 
+      <div class="ss-h">
+        <div class="ss-eyebrow">Pre-approved control functions (fractional)</div>
+        <div class="ss-meta">Year 1 + Year 2 total <strong>~&euro;232.5k</strong></div>
+      </div>
+
+      <div class="cost-2col">
         <div>
-          <div class="sidecard">
-            <div class="sc-tag">Pre-Approved Control Functions</div>
-            <div class="sc-title">Fractional, not full hires</div>
-            <div class="pcf-row"><span>External Chair</span><span class="v">&euro;40k</span></div>
-            <div class="pcf-row"><span>Compliance Officer</span><span class="v">&euro;60k</span></div>
-            <div class="pcf-row"><span>Risk Officer</span><span class="v">&euro;40k</span></div>
-            <div class="pcf-row"><span>Internal Audit</span><span class="v">&euro;35k</span></div>
-            <div class="pcf-row"><span>Data Protection</span><span class="v">&euro;15k</span></div>
-            <div class="pcf-row"><span>Company Secretary</span><span class="v">&euro;7.5k</span></div>
-            <div class="pcf-row"><span>Tax Advisory</span><span class="v">&euro;10k</span></div>
-            <div class="pcf-row total"><span>Y2+ run-rate</span><span class="v">&euro;232.5k</span></div>
-            <div class="pcf-row"><span>Y1 (partial)</span><span class="v">&euro;85.6k</span></div>
-          </div>
-
-          <div class="sidecard gold">
-            <div class="sc-tag">Backstop</div>
-            <div class="sc-title">Start as a broker</div>
-            <div class="sc-body">In addition to the MiFID licence, we're pursuing an <strong>Investment Intermediary Authorisation</strong> to resell health and life insurance products. The licence theoretically permits us to sell pensions too, and the bar to acquire it is materially lower than MiFID. If our timeline slips, we integrate existing pension providers and operate as a digital broker to generate revenue.</div>
-          </div>
+          <div class="cost-row"><span>External Chair</span><span class="v">&euro;40k</span></div>
+          <div class="cost-row"><span>Compliance Officer</span><span class="v">&euro;60k</span></div>
+          <div class="cost-row"><span>Risk Officer</span><span class="v">&euro;40k</span></div>
+          <div class="cost-row"><span>Internal Audit</span><span class="v">&euro;35k</span></div>
         </div>
+        <div>
+          <div class="cost-row"><span>Data Protection</span><span class="v">&euro;15k</span></div>
+          <div class="cost-row"><span>Company Secretary</span><span class="v">&euro;7.5k</span></div>
+          <div class="cost-row"><span>Tax Advisory</span><span class="v">&euro;10k</span></div>
+          <div class="cost-row total"><span>Year 1 + Year 2 total</span><span class="v">&euro;232.5k</span></div>
+        </div>
+      </div>
+      <div class="cost-foot">Founders fill several PCF roles themselves. INED sourced via network. The CBI requires <strong>three independent lines of defence</strong>, so compliance, risk, and audit are filled with fractional external hires.</div>
 
+      <div class="ss-h">
+        <div class="ss-eyebrow">Two backstops if anything slips</div>
+      </div>
+
+      <div class="backstops-2">
+        <div class="bcard green">
+          <div class="b-tag">Backstop 1 &middot; Revenue path</div>
+          <div class="b-title">Broker pensions on the IIA</div>
+          <div class="b-body">The <strong>IIA</strong> we're acquiring for insurance also permits the resale of pensions from existing providers. If the MiFID timeline slips, we operate as a pension broker on the same licence until authorisation lands, so Year 1 still generates revenue.</div>
+        </div>
+        <div class="bcard gold">
+          <div class="b-tag">Backstop 2 &middot; Asset created</div>
+          <div class="b-title">The licensed entity has shell value</div>
+          <div class="b-body">A fully-authorised <strong>MiFID Class 3 firm in Ireland</strong> is itself a saleable asset. Year 1 spend creates both the build and a regulated entity that retains value if the product underperforms.</div>
+        </div>
       </div>
 
     </div>

@@ -12,137 +12,360 @@
 <div class="document">
 
 <div class="sw">
-  <div class="sm">05 &middot; For individuals <em>Benefits they understand, a pension they check</em></div>
+  <style>
+    /* Spacing scale (proposed deck-wide tokens; mirrored locally until rolled into _design-system.css) */
+    .sw {
+      --sp-1: 4px;   /* micro: in-tile item gap */
+      --sp-2: 8px;   /* small: row gap, tight stack */
+      --sp-3: 12px;  /* medium: card-internal padding, sibling gap inside a block */
+      --sp-4: 16px;  /* block: between content blocks within a section */
+      --sp-5: 22px;  /* section: top-level rhythm, lede->strip, between major sections */
+      --sp-6: 32px;  /* page: large hero->body breaks (rare) */
+    }
+    /* Higher specificity than design-system's `.slide p { margin: 0; }` (0,1,1) */
+    .sw p.ind-lede { font-size: 13px; line-height: 1.6; color: var(--ink); margin-bottom: var(--sp-4); }
+    .sw p.ind-lede strong { color: var(--green); font-weight: 600; }
+    .sw p.ind-lede em { font-style: normal; color: var(--gold-deep); font-weight: 600; }
+
+    /* Feature grid: top row of three smaller tiles, bottom row of two wider tiles */
+    .feat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--sp-3); margin-bottom: var(--sp-3); }
+    .feat-grid .row-2 { display: grid; grid-template-columns: 1fr 1.45fr; gap: var(--sp-3); grid-column: 1 / -1; }
+
+    /* Tile shell — borderless app screen */
+    .tile { background: #fff; border: 1px solid var(--r1); border-radius: 10px; box-shadow: 0 6px 14px -8px rgba(19,79,52,0.18); overflow: hidden; display: flex; flex-direction: column; }
+    .tile.t-sm { height: 220px; }
+    .tile.t-lg { height: 244px; }
+
+    /* Caption block under each tile — mirrors slide 04's .beat structure (number + heading on one line, body below) */
+    .cap { padding: var(--sp-2) 2px 0; }
+    .cap .cap-line { display: flex; align-items: baseline; gap: var(--sp-2); }
+    .cap .cn { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: var(--gold-deep); letter-spacing: .04em; flex-shrink: 0; }
+    .cap .ch { font-family: var(--font-serif); font-size: 14px; font-weight: 500; color: var(--ink); line-height: 1.2; letter-spacing: -.01em; }
+    .cap .ch em { font-style: normal; color: var(--gold-deep); font-weight: 500; }
+    .cap .cb { font-size: 11px; line-height: 1.5; color: var(--muted); margin-top: 2px; }
+    .cap .cb strong { color: var(--green); font-weight: 600; }
+
+    /* App-screen header bar (mimics phone status without chrome) */
+    .app-bar { display: flex; align-items: center; gap: 6px; padding: 5px 9px 4px; background: #FDFBF5; border-bottom: 1px solid var(--r0); flex-shrink: 0; font-size: 8px; color: var(--muted); }
+    .app-bar .ab-logo { width: 14px; height: 14px; border-radius: 4px; background: var(--green); color: #F5F5F2; font-family: var(--font-serif); font-size: 9px; font-weight: 500; display: flex; align-items: center; justify-content: center; }
+    .app-bar .ab-name { font-family: var(--font-serif); font-size: 10px; color: var(--ink); flex: 1; letter-spacing: -.005em; }
+    .app-bar .ab-meta { font-size: 7px; color: var(--muted); }
+
+    /* WHATSAPP tile (small) — header + brand + single inbound message, no reply */
+    .wa-bg { background: #ECE5DD; flex: 1; display: flex; flex-direction: column; min-height: 0; }
+    .wa-brand { background: #075E54; color: #fff; padding: 4px 10px; display: flex; align-items: center; gap: 6px; font-size: 9px; font-weight: 600; letter-spacing: .04em; flex-shrink: 0; }
+    .wa-brand .wa-logo { width: 12px; height: 12px; flex-shrink: 0; }
+    .wa-hd { background: #075E54; color: #fff; padding: 6px 10px 7px; display: flex; align-items: center; gap: 7px; flex-shrink: 0; border-top: 1px solid rgba(255,255,255,0.12); }
+    .wa-hd .wa-back { font-size: 13px; line-height: 1; opacity: .92; }
+    .wa-hd .wa-av { width: 24px; height: 24px; border-radius: 50%; background: var(--green); color: #F5F5F2; font-family: var(--font-serif); font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; border: 1.5px solid #ECE5DD; }
+    .wa-hd .wa-id { display: flex; flex-direction: column; gap: 1px; flex: 1; min-width: 0; }
+    .wa-hd .wa-name { font-size: 10.5px; font-weight: 600; line-height: 1.1; display: flex; align-items: center; gap: 4px; }
+    .wa-hd .wa-tick { width: 9px; height: 9px; }
+    .wa-hd .wa-status { font-size: 8px; opacity: .85; line-height: 1.1; }
+    .wa-hd .wa-icons { display: flex; gap: 9px; align-items: center; opacity: .9; font-size: 10px; line-height: 1; }
+    .wa-thread { padding: 9px 8px 8px; flex: 1; display: flex; flex-direction: column; gap: 5px; overflow: hidden; }
+    .wa-day { align-self: center; background: rgba(225,245,254,0.92); color: #54656F; font-size: 7.5px; font-weight: 600; padding: 2px 8px; border-radius: 4px; box-shadow: 0 1px 1px rgba(0,0,0,0.05); margin-bottom: 1px; letter-spacing: .04em; text-transform: uppercase; }
+    .wa-msg { background: #fff; border-radius: 8px 8px 8px 1px; padding: 6px 9px 7px; font-size: 9.5px; line-height: 1.4; color: #303030; max-width: 92%; align-self: flex-start; box-shadow: 0 1px 1px rgba(0,0,0,0.08); position: relative; }
+    .wa-msg strong { font-weight: 600; color: #075E54; }
+    .wa-msg .wa-time { display: inline-flex; align-items: center; gap: 3px; font-size: 7px; color: #999; float: right; margin: 3px 0 -1px 6px; }
+    .wa-link { display: inline-block; margin-top: 5px; padding: 4px 8px; background: #075E54; color: #fff; border-radius: 4px; font-size: 8.5px; font-weight: 600; text-decoration: none; }
+
+    /* FUND-PICK tile (small) — age-matched suggestion + scrollable alternatives */
+    .fp-screen { padding: 9px 10px 10px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; }
+    .fp-h { font-family: var(--font-serif); font-size: 11.5px; font-weight: 500; color: var(--ink); line-height: 1.2; letter-spacing: -.005em; }
+    .fp-sub { font-size: 8.5px; color: var(--muted); line-height: 1.35; margin-bottom: 1px; }
+    .fp-list { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow: hidden; }
+    .fp-fund { background: #FAF8F2; border: 1px solid var(--r1); border-radius: 5px; padding: 5px 7px; display: flex; flex-direction: column; gap: 1px; position: relative; }
+    .fp-fund.match { border-color: var(--green); border-width: 1.5px; background: rgba(19,79,52,0.05); }
+    .fp-tag { font-size: 6.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .fp-fund.match .fp-tag { color: var(--green); }
+    .fp-name { font-family: var(--font-serif); font-size: 10px; font-weight: 500; color: var(--ink); letter-spacing: -.005em; line-height: 1.2; }
+    .fp-meta { font-size: 7.5px; color: var(--muted); line-height: 1.3; }
+    .fp-meta strong { color: var(--green); font-weight: 600; }
+    .fp-scroll { display: flex; align-items: center; gap: 4px; font-size: 7.5px; color: var(--muted); padding-top: 1px; }
+    .fp-scroll .fp-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--r1); display: inline-block; }
+    .fp-scroll .fp-dot.on { background: var(--green); }
+
+    /* HOME tile (small) — current balance + employer match + projection */
+    .home-screen { padding: 9px 10px 10px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; }
+    .home-bal-now { display: flex; flex-direction: column; gap: 1px; padding-bottom: 6px; border-bottom: 1px solid rgba(19,79,52,0.10); }
+    .home-bal-lbl { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+    .home-bal-now .home-bal { font-family: var(--font-serif); font-size: 22px; line-height: 1; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.02em; margin-top: 2px; }
+    .home-bal-now .home-sub { font-size: 8px; color: var(--muted); margin-top: 2px; }
+    .home-bal-now .home-sub strong { color: var(--green); font-weight: 600; }
+    .home-employer { background: var(--green); color: #F5F5F2; border-radius: 6px; padding: 6px 9px; display: flex; flex-direction: column; gap: 1px; }
+    .home-employer .he-lbl { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,245,242,0.65); }
+    .home-employer .he-line { font-family: var(--font-serif); font-size: 11.5px; font-weight: 500; color: var(--gold); letter-spacing: -.005em; line-height: 1.15; }
+    .home-employer .he-line .he-amt { color: var(--gold); }
+    .home-employer .he-sub { font-size: 7.5px; color: rgba(245,245,242,0.78); line-height: 1.3; margin-top: 1px; }
+    .home-row { display: flex; justify-content: space-between; align-items: baseline; padding: 3px 0; font-size: 8.5px; color: var(--ink); }
+    .home-row .hv { font-family: var(--font-serif); font-size: 9.5px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .home-row .hv.gold { color: var(--gold-deep); }
+    .home-proj { padding: 5px 0 0; border-top: 1px dashed rgba(19,79,52,0.10); display: flex; justify-content: space-between; align-items: baseline; }
+    .home-proj .hp-l { font-size: 8px; color: var(--muted); }
+    .home-proj .hp-v { font-family: var(--font-serif); font-size: 11px; font-weight: 500; color: var(--green); font-variant-numeric: tabular-nums; }
+
+    /* FEE DISCLOSURE tile (large bottom-left) */
+    .fee-screen { padding: 11px 13px 12px; flex: 1; display: flex; flex-direction: column; gap: 7px; min-height: 0; }
+    .fee-hd { display: flex; align-items: baseline; justify-content: space-between; }
+    .fee-h { font-family: var(--font-serif); font-size: 12px; font-weight: 500; color: var(--ink); letter-spacing: -.005em; }
+    .fee-period { font-size: 8px; color: var(--muted); font-weight: 500; letter-spacing: .04em; }
+    .fee-total { display: flex; flex-direction: column; gap: 1px; padding: 7px 0 8px; border-bottom: 1px solid rgba(19,79,52,0.08); }
+    .fee-total .ft-lbl { font-size: 7.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    .fee-total .ft-amt { font-family: var(--font-serif); font-size: 26px; line-height: 1; font-weight: 500; color: var(--gold-deep); font-variant-numeric: tabular-nums; letter-spacing: -.02em; margin-top: 3px; }
+    .fee-total .ft-sub { font-size: 8.5px; color: var(--muted); margin-top: 3px; }
+    .fee-total .ft-sub strong { color: var(--green); font-weight: 600; }
+    .fee-rows { display: flex; flex-direction: column; gap: 0; }
+    .fee-row { display: grid; grid-template-columns: 1fr auto auto; gap: 10px; align-items: baseline; padding: 4px 0; border-top: 1px solid rgba(19,79,52,0.06); }
+    .fee-row:first-of-type { border-top: 0; }
+    .fee-row .fr-l { font-size: 9.5px; color: var(--ink); }
+    .fee-row .fr-l span { display: block; font-size: 7.5px; color: var(--muted); margin-top: 1px; }
+    .fee-row .fr-pct { font-size: 8.5px; color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 500; }
+    .fee-row .fr-eur { font-family: var(--font-serif); font-size: 10.5px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .fee-bench { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 6px 9px; margin-top: auto; background: rgba(19,79,52,0.06); border-radius: 5px; }
+    .fee-bench .fb-l { font-size: 8.5px; color: var(--ink); line-height: 1.3; }
+    .fee-bench .fb-l strong { color: var(--green); font-weight: 600; }
+    .fee-bench .fb-r { font-family: var(--font-serif); font-size: 10.5px; color: var(--green); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+    /* AI tile (large bottom-right) — bundled-benefits question */
+    .ai-screen { padding: 10px 12px 10px; flex: 1; display: flex; flex-direction: column; gap: 6px; min-height: 0; }
+    .ai-q { background: var(--green); color: #F5F5F2; border-radius: 8px 8px 1px 8px; padding: 6px 9px; font-size: 9px; line-height: 1.4; max-width: 78%; align-self: flex-end; font-style: normal; font-family: var(--font-sans); }
+    .ai-tag { font-size: 6.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); }
+    .ai-a { background: #fff; border: 1px solid var(--r1); border-radius: 8px 8px 8px 1px; padding: 7px 9px; font-size: 9px; line-height: 1.45; color: var(--ink); max-width: 92%; }
+    .ai-a strong { color: var(--green); font-weight: 600; }
+    .ai-a .ai-bullet { display: grid; grid-template-columns: 7px 1fr; gap: 6px; align-items: start; margin-top: 4px; }
+    .ai-a .ai-bullet:first-of-type { margin-top: 5px; }
+    .ai-a .ai-bullet .ai-mk { font-family: var(--font-serif); color: var(--gold-deep); font-weight: 600; line-height: 1.45; font-size: 9px; }
+    .ai-a .ai-bullet .ai-tx { font-size: 8.5px; line-height: 1.45; color: var(--ink); }
+    .ai-a .ai-bullet .ai-tx strong { color: var(--green); font-weight: 600; }
+    .ai-cite { font-size: 7px; color: var(--muted); margin-top: 5px; padding-top: 4px; border-top: 1px solid rgba(19,79,52,0.07); }
+    .ai-input { margin-top: auto; background: rgba(19,79,52,0.06); border-radius: 14px; padding: 5px 10px; font-size: 8px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+    .ai-input .ai-mic { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+
+    /* The Irish charity quote — sits below the grid as the contrast moment */
+    .heard.contrast { margin: var(--sp-1) 0 0; }
+
+    /* Footnote — single-row format, push to bottom via the inherited margin-top: auto */
+    .footnotes.tight { padding-top: var(--sp-2); grid-template-columns: 1fr; }
+  </style>
+
+  <div class="sm">05 &middot; For individuals <em>What makes the product unique to use</em></div>
   <div class="slide cream">
     <div class="si fc">
 
       <div class="sh">
         <div class="sh-left">
           <div class="eyebrow">2.3 &middot; For individuals</div>
-          <h2 class="t-title">Benefits they understand. <em>A pension they check.</em></h2>
+          <h2 class="t-title">A pension they actually open. <em>Bundled benefits, with the saver in the loop.</em></h2>
         </div>
       </div>
 
-      <p class="t-body" style="margin-bottom: 14px;">Most pensions are invisible to the person they're for. Accruo turns that around: a two-minute signup, a home screen that makes saving feel tangible, and an AI agent that surfaces information when an employee needs it.</p>
+      <p class="ind-lede">The features that set Accruo apart are not in the journey, they are in <strong>what the saver sees once they are in.</strong> A fund matched to their age with real alternatives. Their employer's contribution shown as money they own. An assistant that answers across the bundled stack of pension, health, and life cover. <em>And fees disclosed in plain numbers.</em></p>
 
-      <!-- 3 phones: Onboarding (with WhatsApp notif above), Savings journey, AI companion -->
-      <div class="mock-phones-3" style="align-items:flex-end;">
+      <!-- Feature grid: three smaller tiles on top, two wider tiles below -->
+      <div class="feat-grid">
 
-        <!-- Phone 1: Onboarding flow with WhatsApp notification + dotted connector -->
-        <div style="display:flex; flex-direction:column; align-items:center; gap:0;">
-          <div class="wa-notif">
-            <div class="wa-icon">A</div>
-            <div class="wa-body">
-              <div class="wa-app">Accruo</div>
-              <div class="wa-msg">Your Galway Tech pension is ready. Two minutes to set up.</div>
-            </div>
-          </div>
-          <div class="wa-conn">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-          </div>
-          <div class="phone">
-            <div class="screen">
-              <div class="notch"></div>
-              <div class="statusbar"><span>9:41</span><span>●●●● 100%</span></div>
-              <div class="content">
-                <div class="logo-sm">A</div>
-                <h3>Welcome, <em>Aoife.</em></h3>
-                <p class="psub">Your Galway Tech pension is ready.</p>
-                <div class="fund-card">
-                  <div class="fc-tag">Fund</div>
-                  <div class="fc-name">BlackRock Target Date 2060</div>
-                  <div class="fc-blurb">Most people your age invest in this.</div>
+        <!-- TILE 01: WhatsApp invite (small) -->
+        <div>
+          <div class="tile t-sm">
+            <div class="wa-bg">
+              <div class="wa-brand">
+                <svg class="wa-logo" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path fill="#25D366" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 2.1.55 4.15 1.6 5.96L2 22l4.25-1.11a9.85 9.85 0 0 0 5.79 1.85c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2z"/>
+                  <path fill="#fff" d="M17.5 14.38c-.27-.13-1.59-.78-1.84-.87-.25-.09-.43-.13-.61.13-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.13-1.13-.42-2.16-1.34-.8-.71-1.34-1.59-1.49-1.86-.16-.27-.02-.41.12-.55.12-.12.27-.32.4-.48.13-.16.18-.27.27-.45.09-.18.04-.34-.02-.48-.07-.13-.61-1.46-.83-2-.22-.53-.45-.46-.61-.47-.16-.01-.34-.01-.52-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.29 0 1.34.98 2.64 1.12 2.82.13.18 1.94 2.96 4.7 4.15.66.28 1.17.45 1.57.58.66.21 1.26.18 1.74.11.53-.08 1.59-.65 1.81-1.27.22-.62.22-1.16.16-1.27-.07-.11-.25-.18-.52-.31z"/>
+                </svg>
+                WhatsApp
+              </div>
+              <div class="wa-hd">
+                <span class="wa-back">&lsaquo;</span>
+                <div class="wa-av"></div>
+                <div class="wa-id">
+                  <div class="wa-name">Accruo
+                    <svg class="wa-tick" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                      <path fill="#34B7F1" d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.7 6.3-4 4a1 1 0 0 1-1.4 0l-2-2a1 1 0 1 1 1.4-1.4L7 8.6l3.3-3.3a1 1 0 1 1 1.4 1.4z"/>
+                    </svg>
+                  </div>
+                  <div class="wa-status">online</div>
                 </div>
-                <div class="ptile" style="margin-bottom: 6px;">
-                  <span class="ptile-lbl">Employer match</span>
-                  <span class="ptile-val">+ 6%</span>
+                <div class="wa-icons">&middot;&middot;&middot;</div>
+              </div>
+              <div class="wa-thread">
+                <div class="wa-day">Today</div>
+                <div class="wa-msg">
+                  Hi Aoife, <strong>Galway Tech</strong> has set up your pension. Two minutes to activate, identity verified from payroll.
+                  <span class="wa-link">Activate &rarr;</span>
+                  <span class="wa-time">9:38</span>
                 </div>
-                <div class="btn-big">Confirm</div>
-                <div class="btn-link" style="margin-top: 4px;">Want more investment options?</div>
               </div>
             </div>
+          </div>
+          <div class="cap">
+            <div class="cap-line"><span class="cn">01</span><span class="ch">An invite, not an app store trip.</span></div>
+            <div class="cb">Met where they already are, on WhatsApp or Gmail, with identity verified from payroll. <strong>No download, no documents.</strong></div>
           </div>
         </div>
 
-        <!-- Phone 2: Savings journey -->
-        <div class="phone">
-          <div class="screen">
-            <div class="notch"></div>
-            <div class="statusbar"><span>9:41</span><span>●●●● 100%</span></div>
-            <div class="content">
-              <div class="logo-sm">A</div>
-              <div class="pbal-block">
-                <div class="pbal-lbl">On track at 65</div>
-                <div class="pbal">&euro;2,400<span style="font-size:.5em; color:var(--muted);">/mo</span></div>
-                <div class="pproj"><strong>&uarr; &euro;80</strong> from last month. <span style="color:var(--muted);">&euro;36k saved so far.</span></div>
-              </div>
-              <div class="ptile">
-                <span class="ptile-lbl">You contributed</span>
-                <span class="ptile-val">&euro;5,000</span>
-              </div>
-              <div class="ptile">
-                <span class="ptile-lbl">Employer added</span>
-                <span class="ptile-val gold">&euro;6,000</span>
-              </div>
-              <div class="ptile">
-                <span class="ptile-lbl">Tax relief saved</span>
-                <span class="ptile-val gold">&euro;2,000</span>
-              </div>
-              <div class="btn-big">Adjust contribution</div>
+        <!-- TILE 02: Fund pick — matched to age, scroll for alternatives -->
+        <div>
+          <div class="tile t-sm">
+            <div class="app-bar">
+              <div class="ab-logo">A</div>
+              <div class="ab-name">Choose your fund</div>
+              <div class="ab-meta">Step 2 of 3</div>
             </div>
+            <div class="fp-screen">
+              <div class="fp-h">A fund matched to your age.</div>
+              <div class="fp-sub">Aoife, 28. Scroll for alternatives or keep this.</div>
+              <div class="fp-list">
+                <div class="fp-fund match">
+                  <div class="fp-tag">Matched to your age</div>
+                  <div class="fp-name">BlackRock Target 2060</div>
+                  <div class="fp-meta">95% global equity &middot; <strong>0.30%</strong> fee</div>
+                </div>
+                <div class="fp-fund">
+                  <div class="fp-tag">Alternative</div>
+                  <div class="fp-name">Vanguard FTSE All-World</div>
+                  <div class="fp-meta">100% equity &middot; 0.22% fee</div>
+                </div>
+                <div class="fp-fund">
+                  <div class="fp-tag">Alternative</div>
+                  <div class="fp-name">iShares ESG Aware</div>
+                  <div class="fp-meta">90% equity, screened &middot; 0.34% fee</div>
+                </div>
+              </div>
+              <div class="fp-scroll"><span class="fp-dot on"></span><span class="fp-dot"></span><span class="fp-dot"></span> scroll for 9 more</div>
+            </div>
+          </div>
+          <div class="cap">
+            <div class="cap-line"><span class="cn">02</span><span class="ch">Matched to your age, not locked to it.</span></div>
+            <div class="cb">A target-date fund suggested for the saver's age, with <strong>real alternatives one tap away.</strong></div>
           </div>
         </div>
 
-        <!-- Phone 3: AI companion -->
-        <div class="phone">
-          <div class="screen">
-            <div class="notch"></div>
-            <div class="statusbar"><span>9:41</span><span>●●●● 100%</span></div>
-            <div class="content">
-              <div class="logo-sm">A</div>
-              <h3>Ask Accruo.</h3>
-              <p class="psub">Answers grounded in your account and Irish regulation.</p>
-              <div class="chat-q" style="background:var(--green); color:#F5F5F2; border-radius:9px 9px 2px 9px; padding:6px 9px; font-size:10px; margin-bottom:7px; max-width:90%;">Am I on track for retirement?</div>
-              <div class="chat-tag" style="margin-bottom:4px;">Accruo</div>
-              <p style="font-size:9.5px; line-height:1.45; color:var(--ink); margin:0 0 6px;">You're on track for <strong style="color:var(--green); font-weight:600;">&euro;2,400/month</strong> at 65. Whether that's enough depends on the retirement you want.</p>
-              <p style="font-size:9px; line-height:1.45; color:var(--muted); margin:0;">I can't give advice, but I can help you work it out.</p>
-              <div class="ai-panel">
-                <div class="ai-hd">Information, not advice</div>
-                <p class="ai-a">Factual questions get grounded answers. Advice-shaped questions get redirected.</p>
+        <!-- TILE 03: Home screen — current balance + employer added + projection -->
+        <div>
+          <div class="tile t-sm">
+            <div class="app-bar">
+              <div class="ab-logo">A</div>
+              <div class="ab-name">Aoife &middot; Galway Tech</div>
+              <div class="ab-meta">PRSA</div>
+            </div>
+            <div class="home-screen">
+              <div class="home-bal-now">
+                <div class="home-bal-lbl">Your pension today</div>
+                <div class="home-bal">&euro;13,420</div>
+                <div class="home-sub"><strong>&uarr; &euro;540</strong> this month.</div>
+              </div>
+              <div class="home-employer">
+                <div class="he-lbl">This year, from your employer</div>
+                <div class="he-line">Galway Tech added <span class="he-amt">&euro;6,000</span></div>
+                <div class="he-sub">6% match on top of your salary.</div>
+              </div>
+              <div class="home-row"><span>You contributed</span><span class="hv">&euro;5,000</span></div>
+              <div class="home-row"><span>Tax relief</span><span class="hv gold">&euro;2,000</span></div>
+              <div class="home-proj">
+                <span class="hp-l">On track at 65</span>
+                <span class="hp-v">&euro;2,400/mo</span>
               </div>
             </div>
           </div>
+          <div class="cap">
+            <div class="cap-line"><span class="cn">03</span><span class="ch">Money owned, not deducted.</span></div>
+            <div class="cb">Today's balance leads, and the <strong>employer match is shown as money the saver owns,</strong> not buried in a payslip.</div>
+          </div>
+        </div>
+
+        <!-- ROW 2: fees + AI -->
+        <div class="row-2">
+
+          <!-- TILE 04: Fee disclosure (wider) -->
+          <div>
+            <div class="tile t-lg">
+              <div class="app-bar">
+                <div class="ab-logo">A</div>
+                <div class="ab-name">Your fees, this year</div>
+                <div class="ab-meta">PRSA</div>
+              </div>
+              <div class="fee-screen">
+                <div class="fee-total">
+                  <div class="ft-lbl">Total fees, year to date</div>
+                  <div class="ft-amt">&euro;38.40</div>
+                  <div class="ft-sub">All-in, on a <strong>&euro;13,420</strong> balance. No exit fees, no commissions.</div>
+                </div>
+                <div class="fee-rows">
+                  <div class="fee-row">
+                    <div class="fr-l">Annual management charge<span>Accruo platform</span></div>
+                    <div class="fr-pct">0.20%</div>
+                    <div class="fr-eur">&euro;26.84</div>
+                  </div>
+                  <div class="fee-row">
+                    <div class="fr-l">Fund TER<span>BlackRock Target 2060</span></div>
+                    <div class="fr-pct">0.10%</div>
+                    <div class="fr-eur">&euro;11.56</div>
+                  </div>
+                  <div class="fee-row">
+                    <div class="fr-l">Trading and FX<span>Pass-through</span></div>
+                    <div class="fr-pct">0.00%</div>
+                    <div class="fr-eur">&euro;0.00</div>
+                  </div>
+                </div>
+                <div class="fee-bench">
+                  <div class="fb-l">Typical Irish workplace pension. <strong>1.00% on the same balance is &euro;134.20.</strong></div>
+                  <div class="fb-r">3.5&times; less</div>
+                </div>
+              </div>
+            </div>
+            <div class="cap">
+              <div class="cap-line"><span class="cn">04</span><span class="ch">Fees, in plain numbers.</span></div>
+              <div class="cb">Every charge totalled and shown in euros, with a comparison to a typical Irish workplace pension on the same balance. <strong>Most providers obscure this.</strong></div>
+            </div>
+          </div>
+
+          <!-- TILE 05: AI assistant (largest) — bundled-benefits maternity question -->
+          <div>
+            <div class="tile t-lg">
+              <div class="app-bar">
+                <div class="ab-logo"></div>
+                <div class="ab-name">Ask Accruo</div>
+                <div class="ab-meta">Grounded across your benefits</div>
+              </div>
+              <div class="ai-screen">
+                <div class="ai-q">I'm pregnant! What cover do we have for the baby?</div>
+                <div class="ai-tag">Accruo &middot; grounded in your Galway Tech benefits</div>
+                <div class="ai-a">
+                  Congratulations Aoife. Your benefits package covers this on two sides:
+                  <div class="ai-bullet">
+                    <span class="ai-mk">&bull;</span>
+                    <span class="ai-tx"><strong>Life cover</strong> with Irish Life pays <strong>4&times; salary</strong> (&euro;240,000) to your nominated beneficiaries. Add the baby once born.</span>
+                  </div>
+                  <div class="ai-bullet">
+                    <span class="ai-mk">&bull;</span>
+                    <span class="ai-tx"><strong>Health cover</strong> with VHI includes <strong>maternity benefit</strong> after a 52-week wait, the baby is automatically covered for the first 13 weeks, and paediatric outpatient is included from week 14.</span>
+                  </div>
+                  <div class="ai-cite">Sources: Galway Tech group life policy, VHI Company Plan Plus schedule.</div>
+                </div>
+                <div class="ai-input"><span class="ai-mic"></span>Type a question</div>
+              </div>
+            </div>
+            <div class="cap">
+              <div class="cap-line"><span class="cn">05</span><span class="ch">One assistant, across the bundled stack.</span></div>
+              <div class="cb">In-app AI grounded in the saver's pension, health, and life cover. <strong>The bundled stack is the unique data product.</strong><sup class="fn">1</sup></div>
+            </div>
+          </div>
+
         </div>
 
       </div>
 
-      <!-- Three captions, employee-perspective with employer ROI angle -->
-      <div class="moment-grid three" style="gap: 14px; margin-top: 14px;">
-        <div class="moment small">
-          <div class="m-tag">01 &middot; Onboard</div>
-          <h4 class="m-head">Two minutes from invite to enrolled.</h4>
-          <p class="m-body">A WhatsApp or email invite, identity verified using payroll data already on file, a single fund matched to retirement date with the option to choose differently. Saving starts in minutes.</p>
-        </div>
-        <div class="moment small">
-          <div class="m-tag">02 &middot; Track</div>
-          <h4 class="m-head">What saving is buying you.</h4>
-          <p class="m-body">The home screen shows what the employee has contributed, what tax they have saved, and what their employer has added, front and centre. The pension stops being a deduction; the employer's contribution is visibly attributed to the employer.</p>
-        </div>
-        <div class="moment small">
-          <div class="m-tag">03 &middot; Ask</div>
-          <h4 class="m-head">Information surfaced, not advice given.</h4>
-          <p class="m-body">An in-app AI agent surfaces information grounded in the employee's own account and Irish regulation. The rail between information and advice is hard-coded, so when a question crosses it, the assistant says so.</p>
-        </div>
-      </div>
-
-      <div class="heard">
-        <div class="h-tag">Our discussion with an Irish charity HR lead</div>
+      <!-- Irish charity quote — the world Accruo replaces -->
+      <div class="heard contrast">
+        <div class="h-tag">Our discussion with an Irish charity HR lead &middot; the world Accruo replaces</div>
         <div class="h-quote">&ldquo;Pensions aren't valued. Employees only really see them once a year, when the colourful benefits brochure is sent in the mail. The youngest employee in my office is trying to opt out, and I'm having to convince her against it.&rdquo;</div>
       </div>
 
-      <p class="bridge" style="margin-top: 12px;"><strong>For the saver, this is the fix to the three failures from section 1:</strong> analogue admin becomes a two-minute signup, opacity becomes a home screen they actually understand, and poor value becomes the employer's contribution showing up as money they own.</p>
+      <div class="footnotes tight">
+        <div class="fn-row"><sup>1</sup><span>In the MVP the AI will surface factual account details and information on investments. In later years it will evolve to provide financial advice.</span></div>
+      </div>
 
     </div>
     <div class="sf">
