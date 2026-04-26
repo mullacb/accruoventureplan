@@ -17,14 +17,14 @@
     .body-row { display: grid; grid-template-columns: 1fr 232px; gap: 22px; flex: 1; min-height: 0; }
 
     /* Vertical timeline (left column) */
-    .vtl { position: relative; padding-left: 96px; }
+    .vtl { position: relative; padding-left: 96px; height: 100%; display: flex; flex-direction: column; }
     .vtl::before {
       content: ""; position: absolute;
-      left: 76px; top: 12px; bottom: 0;
+      left: 76px; top: 12px; bottom: 20px;
       width: 2px; background: var(--green);
     }
-    .vtl-row { position: relative; padding: 0 0 18px; }
-    .vtl-row:last-child { padding-bottom: 0; }
+    .vtl-row { position: relative; flex: 1; padding: 0; }
+    .vtl-row:last-child { flex: 1; }
     .vtl-date {
       position: absolute; left: -96px; top: 4px; width: 70px;
       text-align: right;
