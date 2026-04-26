@@ -8,6 +8,8 @@ tools/
 *.docx
 *.xlsx
 *.pdf
+# Exception: the presentation financials model belongs in the repo
+!Financials presentation R2.xlsx
 ~$*
 
 # OS / editor cruft
