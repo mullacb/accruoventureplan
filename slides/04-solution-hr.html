@@ -24,11 +24,11 @@
       --sp-6: 32px;  /* page: large hero->body breaks (rare) */
     }
     /* Higher specificity than design-system's `.slide p { margin: 0; }` (0,1,1) */
-    .sw p.hr-lede { font-size: 13px; line-height: 1.6; color: var(--ink); margin-bottom: var(--sp-5); }
+    .sw p.hr-lede { font-size: 13px; line-height: 1.6; color: var(--ink); margin-bottom: var(--sp-4); }
     .sw p.hr-lede strong { color: var(--green); font-weight: 600; }
 
     /* Three narrative beats with HRIS logo strip — runs the page's argument up front */
-    .beat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--r1); border-bottom: 1px solid var(--r1); margin-bottom: var(--sp-5); }
+    .beat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); padding: var(--sp-3) 0; border-top: 1px solid var(--r1); border-bottom: 1px solid var(--r1); margin-bottom: var(--sp-4); }
     .beat { display: flex; flex-direction: column; gap: var(--sp-1); padding: 0 2px; }
     .beat .bt-line { display: flex; align-items: baseline; gap: var(--sp-2); }
     .beat .bt-num { font-family: var(--font-serif); font-size: 13px; font-weight: 600; color: var(--gold-deep); letter-spacing: .04em; flex-shrink: 0; }
@@ -38,14 +38,14 @@
     .beat .bt-b strong { color: var(--green); font-weight: 600; }
 
     /* HRIS row: real brand marks */
-    .hris-strip { display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) var(--sp-4); background: rgba(19,79,52,0.04); border: 1px solid var(--r0); border-left: 2px solid var(--green); margin: var(--sp-3) 0; }
+    .hris-strip { display: flex; align-items: center; gap: var(--sp-4); padding: var(--sp-3) var(--sp-4); background: rgba(19,79,52,0.04); border: 1px solid var(--r0); border-left: 2px solid var(--green); margin: var(--sp-2) 0; }
     .hris-strip .hs-tag { font-size: 10px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--green); flex-shrink: 0; padding-right: var(--sp-3); border-right: 1px solid var(--r1); }
     .hris-strip .hs-logos { display: flex; gap: var(--sp-5); align-items: center; flex: 1; flex-wrap: wrap; }
     .hris-strip .hs-item { display: inline-flex; align-items: center; gap: var(--sp-1); font-size: 11.5px; font-weight: 600; color: var(--ink); letter-spacing: -.005em; }
     .hris-strip .hs-item img { width: 14px; height: 14px; display: block; }
 
     /* Dashboard demo — real SaaS chrome (top bar + sidebar + main content) */
-    .saas-demo { background: #FDFBF5; border: 1px solid var(--r1); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 24px -10px rgba(19,79,52,0.22); margin-bottom: var(--sp-4); }
+    .saas-demo { background: #FDFBF5; border: 1px solid var(--r1); border-radius: 10px; overflow: hidden; box-shadow: 0 10px 24px -10px rgba(19,79,52,0.22); margin-bottom: var(--sp-5); }
     .sd-bar { display: flex; align-items: center; gap: var(--sp-2); padding: 7px var(--sp-3); background: #F5EFE0; border-bottom: 1px solid var(--r0); flex-shrink: 0; }
     .sd-dots { display: flex; gap: var(--sp-1); }
     .sd-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--r1); }
@@ -82,7 +82,7 @@
     .sd-table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
     .sd-table th { text-align: left; font-size: 8.5px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; padding: 6px var(--sp-2); border-bottom: 1px solid var(--r1); }
     .sd-table th.nr { text-align: right; }
-    .sd-table td { padding: 7px var(--sp-2); border-bottom: 1px solid rgba(19,79,52,0.06); color: var(--ink); vertical-align: middle; }
+    .sd-table td { padding: 8px var(--sp-2); border-bottom: 1px solid rgba(19,79,52,0.06); color: var(--ink); vertical-align: middle; }
     .sd-table td.nr { text-align: right; font-variant-numeric: tabular-nums; }
     .sd-table tr:last-child td { border-bottom: 0; }
     .sd-table tr.row-new { background: rgba(201,162,39,0.10); }
@@ -120,7 +120,7 @@
     .heard-tight .h-quote { flex: 1; display: flex; align-items: center; margin: 0; }
 
     /* Activity notification at the bottom of the dashboard — beat 02 (Run on autopilot) in action */
-    .sd-notice { margin-top: var(--sp-3); padding: 10px var(--sp-3); background: rgba(201,162,39,0.18); border: 1px solid rgba(201,162,39,0.42); border-left: 3px solid var(--gold); border-radius: 6px; display: flex; align-items: center; gap: var(--sp-3); box-shadow: 0 5px 14px -5px rgba(201,162,39,0.42); }
+    .sd-notice { margin-top: var(--sp-3); margin-bottom: var(--sp-3); padding: 10px var(--sp-3); background: rgba(201,162,39,0.18); border: 1px solid rgba(201,162,39,0.42); border-left: 3px solid var(--gold); border-radius: 6px; display: flex; align-items: center; gap: var(--sp-3); box-shadow: 0 5px 14px -5px rgba(201,162,39,0.42); }
     .sd-notice .sn-tag { font-size: 9px; font-weight: 700; letter-spacing: .14em; color: #3d2710; background: var(--gold); padding: 3px 7px; border-radius: 3px; flex-shrink: 0; }
     .sd-notice .sn-text { font-size: 11px; line-height: 1.5; color: var(--ink); flex: 1; }
     .sd-notice .sn-text strong { color: var(--green); font-weight: 600; }
@@ -141,7 +141,7 @@
       <div class="sh">
         <div class="sh-left">
           <div class="eyebrow">2.2 &middot; For HR teams</div>
-          <h2 class="t-title">Benefits that run themselves. <em>HR hires the person, the platform does the rest.</em></h2>
+          <h2 class="t-title">Benefits that run themselves.</h2>
         </div>
       </div>
 
