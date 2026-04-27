@@ -70,40 +70,56 @@
     .wa-msg .wa-time { display: inline-flex; align-items: center; gap: 3px; font-size: 7px; color: #999; float: right; margin: 3px 0 -1px 6px; }
     .wa-link { display: inline-block; margin-top: 5px; padding: 4px 8px; background: #075E54; color: #fff; border-radius: 4px; font-size: 8.5px; font-weight: 600; text-decoration: none; }
 
-    /* FUND-PICK tile (small) — age-matched suggestion + scrollable alternatives */
-    .fp-screen { padding: 9px 10px 10px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; }
-    .fp-h { font-family: var(--font-serif); font-size: 11.5px; font-weight: 500; color: var(--ink); line-height: 1.2; letter-spacing: -.005em; }
-    .fp-sub { font-size: 8.5px; color: var(--muted); line-height: 1.35; margin-bottom: 1px; }
-    .fp-list { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow: hidden; }
-    .fp-fund { background: #FAF8F2; border: 1px solid var(--r1); border-radius: 5px; padding: 5px 7px; display: flex; flex-direction: column; gap: 1px; position: relative; }
-    .fp-fund.match { border-color: var(--green); border-width: 1.5px; background: rgba(19,79,52,0.05); }
-    .fp-tag { font-size: 6.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    .fp-fund.match .fp-tag { color: var(--green); }
-    .fp-name { font-family: var(--font-serif); font-size: 10px; font-weight: 500; color: var(--ink); letter-spacing: -.005em; line-height: 1.2; }
-    .fp-meta { font-size: 7.5px; color: var(--muted); line-height: 1.3; }
-    .fp-meta strong { color: var(--green); font-weight: 600; }
-    .fp-scroll { display: flex; align-items: center; gap: 4px; font-size: 7.5px; color: var(--muted); padding-top: 1px; }
-    .fp-scroll .fp-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--r1); display: inline-block; }
-    .fp-scroll .fp-dot.on { background: var(--green); }
+    /* FUND MARKETPLACE tile (small) — fund cards with performance stats */
+    .fm-screen { padding: 8px 9px 8px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; overflow: hidden; }
+    .fm-title { font-family: var(--font-serif); font-size: 11px; font-weight: 500; color: var(--ink); letter-spacing: -.005em; line-height: 1.2; }
+    .fm-sub { font-size: 7.5px; color: var(--muted); margin-top: 1px; }
+    .fm-filters { display: flex; gap: 4px; flex-shrink: 0; }
+    .fm-chip { font-size: 6.5px; font-weight: 600; padding: 2px 6px; border-radius: 10px; border: 1px solid var(--r1); color: var(--muted); background: #FAF8F2; white-space: nowrap; }
+    .fm-chip.active { background: var(--green); color: #F5F5F2; border-color: var(--green); }
+    .fm-list { display: flex; flex-direction: column; gap: 4px; flex: 1; overflow: hidden; }
+    .fm-card { background: #FAF8F2; border: 1px solid var(--r1); border-radius: 6px; padding: 5px 7px 5px; position: relative; }
+    .fm-card.rec { border-color: var(--green); border-width: 1.5px; padding-top: 11px; }
+    .fm-rec-badge { position: absolute; top: 0; right: 8px; font-size: 5.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; background: var(--green); color: #F5F5F2; border-radius: 0 0 3px 3px; padding: 2px 5px; }
+    .fm-card-hd { display: flex; align-items: flex-start; justify-content: space-between; gap: 4px; margin-bottom: 4px; }
+    .fm-card-id { flex: 1; min-width: 0; }
+    .fm-card-name { font-family: var(--font-serif); font-size: 9.5px; font-weight: 500; color: var(--ink); letter-spacing: -.005em; line-height: 1.2; }
+    .fm-card-prov { font-size: 7px; color: var(--muted); margin-top: 1px; }
+    .fm-esg { font-size: 6px; font-weight: 700; color: var(--green); border: 1px solid var(--green); border-radius: 3px; padding: 1px 4px; flex-shrink: 0; margin-top: 1px; }
+    .fm-stats { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .fm-stat { display: flex; flex-direction: column; gap: 1px; }
+    .fm-stat-lbl { font-size: 6.5px; color: var(--muted); font-style: italic; }
+    .fm-stat-val { font-size: 8px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--green); }
+    .fm-stat-val.neutral { color: var(--ink); font-weight: 500; }
+    .fm-stat-val.risk-low { color: var(--green); }
+    .fm-stat-val.risk-med { color: #C27803; }
+    .fm-stat-val.risk-high { color: #DC2626; }
 
-    /* HOME tile (small) — current balance + employer match + projection */
-    .home-screen { padding: 9px 10px 10px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; }
-    .home-bal-now { display: flex; flex-direction: column; gap: 1px; padding-bottom: 6px; border-bottom: 1px solid rgba(19,79,52,0.10); }
-    .home-bal-lbl { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
-    .home-bal-now .home-bal { font-family: var(--font-serif); font-size: 22px; line-height: 1; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -.02em; margin-top: 2px; }
-    .home-bal-now .home-sub { font-size: 8px; color: var(--muted); margin-top: 2px; }
-    .home-bal-now .home-sub strong { color: var(--green); font-weight: 600; }
-    .home-employer { background: var(--green); color: #F5F5F2; border-radius: 6px; padding: 6px 9px; display: flex; flex-direction: column; gap: 1px; }
-    .home-employer .he-lbl { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: rgba(245,245,242,0.65); }
-    .home-employer .he-line { font-family: var(--font-serif); font-size: 11.5px; font-weight: 500; color: var(--gold); letter-spacing: -.005em; line-height: 1.15; }
-    .home-employer .he-line .he-amt { color: var(--gold); }
-    .home-employer .he-sub { font-size: 7.5px; color: rgba(245,245,242,0.78); line-height: 1.3; margin-top: 1px; }
-    .home-row { display: flex; justify-content: space-between; align-items: baseline; padding: 3px 0; font-size: 8.5px; color: var(--ink); }
-    .home-row .hv { font-family: var(--font-serif); font-size: 9.5px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; }
-    .home-row .hv.gold { color: var(--gold-deep); }
-    .home-proj { padding: 5px 0 0; border-top: 1px dashed rgba(19,79,52,0.10); display: flex; justify-content: space-between; align-items: baseline; }
-    .home-proj .hp-l { font-size: 8px; color: var(--muted); }
-    .home-proj .hp-v { font-family: var(--font-serif); font-size: 11px; font-weight: 500; color: var(--green); font-variant-numeric: tabular-nums; }
+    /* DASHBOARD tile (small) — retirement goal + pot calculator + stats */
+    .dash-screen { padding: 8px 9px 9px; flex: 1; display: flex; flex-direction: column; gap: 5px; min-height: 0; overflow: hidden; }
+    .dash-goal-card { background: #FAF8F2; border: 1px solid var(--r1); border-radius: 6px; padding: 6px 8px; flex-shrink: 0; }
+    .dash-goal-hd { display: flex; justify-content: space-between; align-items: flex-start; }
+    .dash-goal-lbl { font-size: 7px; color: var(--muted); font-weight: 500; letter-spacing: .06em; text-transform: uppercase; margin-bottom: 2px; }
+    .dash-goal-status { font-size: 6.5px; font-weight: 700; color: var(--green); background: rgba(19,79,52,0.10); padding: 1.5px 5px; border-radius: 8px; white-space: nowrap; margin-top: 1px; }
+    .dash-goal-amt { font-family: var(--font-serif); font-size: 14px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; line-height: 1.1; margin-bottom: 4px; }
+    .dash-pbar { height: 3.5px; background: rgba(19,79,52,0.12); border-radius: 2px; margin-bottom: 3px; }
+    .dash-pbar-fill { height: 100%; background: var(--green); border-radius: 2px; width: 27%; }
+    .dash-pmeta { display: flex; justify-content: space-between; font-size: 7px; color: var(--muted); }
+    .dash-pot-card { background: var(--green); border-radius: 6px; padding: 6px 8px; flex-shrink: 0; }
+    .dash-pot-hd { font-size: 7.5px; font-weight: 600; color: rgba(245,245,242,0.72); margin-bottom: 3px; }
+    .dash-pot-current { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5px; }
+    .dash-pot-lbl { font-size: 7px; color: rgba(245,245,242,0.65); }
+    .dash-pot-val { font-family: var(--font-serif); font-size: 12px; font-weight: 500; color: var(--gold); letter-spacing: -.01em; }
+    .dash-locs { display: flex; gap: 3px; }
+    .dash-loc { background: rgba(255,255,255,0.13); border-radius: 4px; padding: 4px 4px 3px; display: flex; flex-direction: column; align-items: center; gap: 1px; flex: 1; }
+    .dash-loc-flag { font-size: 11px; line-height: 1.1; }
+    .dash-loc-name { font-size: 6px; color: rgba(245,245,242,0.68); line-height: 1; }
+    .dash-loc-yrs { font-size: 7.5px; font-weight: 700; color: #F5F5F2; font-variant-numeric: tabular-nums; line-height: 1.3; }
+    .dash-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .dash-stat-card { background: #FAF8F2; border: 1px solid var(--r1); border-radius: 5px; padding: 4px 7px; }
+    .dash-stat-lbl { font-size: 7px; color: var(--muted); }
+    .dash-stat-val { font-family: var(--font-serif); font-size: 13px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; line-height: 1.2; }
+    .dash-stat-sub { font-size: 7px; color: var(--green); font-weight: 500; }
 
     /* FEE DISCLOSURE tile (large bottom-left) */
     .fee-screen { padding: 11px 13px 12px; flex: 1; display: flex; flex-direction: column; gap: 7px; min-height: 0; }
@@ -127,20 +143,40 @@
     .fee-bench .fb-l strong { color: var(--green); font-weight: 600; }
     .fee-bench .fb-r { font-family: var(--font-serif); font-size: 10.5px; color: var(--green); font-weight: 500; font-variant-numeric: tabular-nums; }
 
-    /* AI tile (large bottom-right) — bundled-benefits question */
-    .ai-screen { padding: 10px 12px 10px; flex: 1; display: flex; flex-direction: column; gap: 6px; min-height: 0; }
-    .ai-q { background: var(--green); color: #F5F5F2; border-radius: 8px 8px 1px 8px; padding: 6px 9px; font-size: 9px; line-height: 1.4; max-width: 78%; align-self: flex-end; font-style: normal; font-family: var(--font-sans); }
-    .ai-tag { font-size: 6.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); }
-    .ai-a { background: #fff; border: 1px solid var(--r1); border-radius: 8px 8px 8px 1px; padding: 7px 9px; font-size: 9px; line-height: 1.45; color: var(--ink); max-width: 92%; }
-    .ai-a strong { color: var(--green); font-weight: 600; }
-    .ai-a .ai-bullet { display: grid; grid-template-columns: 7px 1fr; gap: 6px; align-items: start; margin-top: 4px; }
-    .ai-a .ai-bullet:first-of-type { margin-top: 5px; }
-    .ai-a .ai-bullet .ai-mk { font-family: var(--font-serif); color: var(--gold-deep); font-weight: 600; line-height: 1.45; font-size: 9px; }
-    .ai-a .ai-bullet .ai-tx { font-size: 8.5px; line-height: 1.45; color: var(--ink); }
-    .ai-a .ai-bullet .ai-tx strong { color: var(--green); font-weight: 600; }
-    .ai-cite { font-size: 7px; color: var(--muted); margin-top: 5px; padding-top: 4px; border-top: 1px solid rgba(19,79,52,0.07); }
-    .ai-input { margin-top: auto; background: rgba(19,79,52,0.06); border-radius: 14px; padding: 5px 10px; font-size: 8px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
-    .ai-input .ai-mic { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+    /* AI PORTFOLIO ADVISOR tile (large bottom-right) */
+    .adv-screen { padding: 10px 12px 10px; flex: 1; display: flex; flex-direction: column; gap: 7px; min-height: 0; overflow: hidden; }
+    .adv-port-lbl { font-size: 7px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+    .adv-port-hd { display: flex; align-items: baseline; justify-content: space-between; }
+    .adv-port-val { font-family: var(--font-serif); font-size: 20px; font-weight: 500; color: var(--ink); letter-spacing: -.02em; line-height: 1; }
+    .adv-ytd { font-size: 7.5px; font-weight: 700; color: var(--green); background: rgba(19,79,52,0.08); padding: 2px 7px; border-radius: 8px; }
+    .adv-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; }
+    .adv-stat { background: rgba(19,79,52,0.06); border-radius: 5px; padding: 4px 6px; }
+    .adv-stat-lbl { font-size: 6.5px; color: var(--muted); letter-spacing: .04em; }
+    .adv-stat-val { font-family: var(--font-serif); font-size: 10px; font-weight: 500; color: var(--ink); letter-spacing: -.01em; line-height: 1.2; margin-top: 1px; }
+    .adv-stat-delta { font-size: 7px; font-weight: 600; color: var(--green); margin-top: 1px; }
+    .adv-stat-note { font-size: 6.5px; color: var(--muted); margin-top: 1px; }
+    .adv-bench-section { display: flex; flex-direction: column; gap: 4px; }
+    .adv-bench-hd { font-size: 7px; font-weight: 700; letter-spacing: .10em; text-transform: uppercase; color: var(--muted); }
+    .adv-bench-row { display: grid; grid-template-columns: 78px 1fr auto; gap: 5px; align-items: center; }
+    .adv-bench-lbl { font-size: 7.5px; color: var(--ink); }
+    .adv-bench-bar { height: 4px; background: rgba(19,79,52,0.10); border-radius: 2px; overflow: hidden; }
+    .adv-bench-fill { height: 100%; border-radius: 2px; }
+    .adv-bench-fill.own { background: var(--green); }
+    .adv-bench-fill.iseq { background: var(--gold-deep); opacity: .7; }
+    .adv-bench-fill.msci { background: rgba(19,79,52,0.40); }
+    .adv-bench-fill.avg { background: var(--r1); }
+    .adv-bench-pct { font-size: 7.5px; font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+    .adv-bench-pct.own { color: var(--green); }
+    .adv-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: auto; }
+    .adv-action { border-radius: 6px; padding: 6px 7px; display: flex; flex-direction: column; gap: 2px; }
+    .adv-action.primary { background: var(--green); }
+    .adv-action.secondary { background: rgba(19,79,52,0.07); }
+    .adv-action-h { font-size: 8px; font-weight: 600; line-height: 1.2; }
+    .adv-action.primary .adv-action-h { color: #F5F5F2; }
+    .adv-action.secondary .adv-action-h { color: var(--ink); }
+    .adv-action-sub { font-size: 6.5px; line-height: 1.3; }
+    .adv-action.primary .adv-action-sub { color: rgba(245,245,242,0.70); }
+    .adv-action.secondary .adv-action-sub { color: var(--muted); }
 
     /* The Irish charity quote — sits below the grid as the contrast moment */
     .heard.contrast { margin: var(--sp-1) 0 0; }
@@ -160,7 +196,7 @@
         </div>
       </div>
 
-      <p class="ind-lede">The features that set Accruo apart are not in the journey, they are in <strong>what the saver sees once they are in.</strong> A fund matched to their age with real alternatives. Their employer's contribution shown as money they own. An assistant that answers across the bundled stack of pension, health, and life cover. <em>And fees disclosed in plain numbers.</em></p>
+      <p class="ind-lede">The features that set Accruo apart are not in the journey, they are in <strong>what the saver sees once they are in.</strong> A fund marketplace matched to their risk profile. Their retirement framed as years of life, not a distant number. Fees in plain euros. <em>And an AI that benchmarks their portfolio against the market.</em></p>
 
       <!-- Feature grid: three smaller tiles on top, two wider tiles below -->
       <div class="feat-grid">
@@ -205,73 +241,129 @@
           </div>
         </div>
 
-        <!-- TILE 02: Fund pick — matched to age, scroll for alternatives -->
+        <!-- TILE 02: Fund marketplace — curated list with performance stats -->
         <div>
           <div class="tile t-sm">
             <div class="app-bar">
               <div class="ab-logo">A</div>
-              <div class="ab-name">Choose your fund</div>
-              <div class="ab-meta">Step 2 of 3</div>
+              <div class="ab-name">Choose your funds</div>
+              <div class="ab-meta">Step 6 of 6</div>
             </div>
-            <div class="fp-screen">
-              <div class="fp-h">A fund matched to your age.</div>
-              <div class="fp-sub">Aoife, 28. Scroll for alternatives or keep this.</div>
-              <div class="fp-list">
-                <div class="fp-fund match">
-                  <div class="fp-tag">Matched to your age</div>
-                  <div class="fp-name">BlackRock Target 2060</div>
-                  <div class="fp-meta">95% global equity &middot; <strong>0.30%</strong> fee</div>
+            <div class="fm-screen">
+              <div>
+                <div class="fm-title">Funds matched to your profile.</div>
+                <div class="fm-sub">Based on your Balanced risk profile</div>
+              </div>
+              <div class="fm-filters">
+                <div class="fm-chip active">All funds</div>
+                <div class="fm-chip">Recommended</div>
+                <div class="fm-chip">ESG only</div>
+              </div>
+              <div class="fm-list">
+                <div class="fm-card rec">
+                  <div class="fm-rec-badge">Recommended</div>
+                  <div class="fm-card-hd">
+                    <div class="fm-card-id">
+                      <div class="fm-card-name">Global Equity Growth</div>
+                      <div class="fm-card-prov">Davy Select &middot; Equities</div>
+                    </div>
+                    <div class="fm-esg">ESG</div>
+                  </div>
+                  <div class="fm-stats">
+                    <div class="fm-stat"><div class="fm-stat-lbl">1Y</div><div class="fm-stat-val">+8.4%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">3Y</div><div class="fm-stat-val">+6.1%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Fee</div><div class="fm-stat-val neutral">0.15%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Risk</div><div class="fm-stat-val risk-med">Medium</div></div>
+                  </div>
                 </div>
-                <div class="fp-fund">
-                  <div class="fp-tag">Alternative</div>
-                  <div class="fp-name">Vanguard FTSE All-World</div>
-                  <div class="fp-meta">100% equity &middot; 0.22% fee</div>
+                <div class="fm-card">
+                  <div class="fm-card-hd">
+                    <div class="fm-card-id">
+                      <div class="fm-card-name">UK Sustainable Bonds</div>
+                      <div class="fm-card-prov">Irish Life &middot; Bonds</div>
+                    </div>
+                    <div class="fm-esg">ESG</div>
+                  </div>
+                  <div class="fm-stats">
+                    <div class="fm-stat"><div class="fm-stat-lbl">1Y</div><div class="fm-stat-val">+3.1%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">3Y</div><div class="fm-stat-val">+2.8%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Fee</div><div class="fm-stat-val neutral">0.05%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Risk</div><div class="fm-stat-val risk-low">Low</div></div>
+                  </div>
                 </div>
-                <div class="fp-fund">
-                  <div class="fp-tag">Alternative</div>
-                  <div class="fp-name">iShares ESG Aware</div>
-                  <div class="fp-meta">90% equity, screened &middot; 0.34% fee</div>
+                <div class="fm-card">
+                  <div class="fm-card-hd">
+                    <div class="fm-card-id">
+                      <div class="fm-card-name">Emerging Markets Growth</div>
+                      <div class="fm-card-prov">Mercer Fund &middot; Equities</div>
+                    </div>
+                  </div>
+                  <div class="fm-stats">
+                    <div class="fm-stat"><div class="fm-stat-lbl">1Y</div><div class="fm-stat-val">+12.2%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">3Y</div><div class="fm-stat-val">+9.4%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Fee</div><div class="fm-stat-val neutral">0.35%</div></div>
+                    <div class="fm-stat"><div class="fm-stat-lbl">Risk</div><div class="fm-stat-val risk-high">High</div></div>
+                  </div>
                 </div>
               </div>
-              <div class="fp-scroll"><span class="fp-dot on"></span><span class="fp-dot"></span><span class="fp-dot"></span> scroll for 9 more</div>
             </div>
           </div>
           <div class="cap">
-            <div class="cap-line"><span class="cn">02</span><span class="ch">Matched to your age, not locked to it.</span></div>
-            <div class="cb">A target-date fund suggested for the saver's age, with <strong>real alternatives one tap away.</strong></div>
+            <div class="cap-line"><span class="cn">02</span><span class="ch">A curated marketplace, not a drop-down.</span></div>
+            <div class="cb">Funds matched to the saver's risk profile, with <strong>real performance data and fees visible before choosing.</strong></div>
           </div>
         </div>
 
-        <!-- TILE 03: Home screen — current balance + employer added + projection -->
+        <!-- TILE 03: Dashboard — retirement goal progress + pot calculator + stats -->
         <div>
           <div class="tile t-sm">
             <div class="app-bar">
               <div class="ab-logo">A</div>
-              <div class="ab-name">Aoife &middot; Galway Tech</div>
-              <div class="ab-meta">PRSA</div>
+              <div class="ab-name">Accruo</div>
+              <div class="ab-meta" style="background:var(--green);color:#F5F5F2;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;font-size:7px;font-weight:700;flex-shrink:0;">JB</div>
             </div>
-            <div class="home-screen">
-              <div class="home-bal-now">
-                <div class="home-bal-lbl">Your pension today</div>
-                <div class="home-bal">&euro;13,420</div>
-                <div class="home-sub"><strong>&uarr; &euro;540</strong> this month.</div>
+            <div class="dash-screen">
+              <div class="dash-goal-card">
+                <div class="dash-goal-hd">
+                  <div>
+                    <div class="dash-goal-lbl">Dream retirement goal</div>
+                    <div class="dash-goal-amt">&euro;180,000 by 2048</div>
+                  </div>
+                  <div class="dash-goal-status">On track</div>
+                </div>
+                <div class="dash-pbar"><div class="dash-pbar-fill"></div></div>
+                <div class="dash-pmeta"><span>27% saved</span><span>22 years remaining</span></div>
               </div>
-              <div class="home-employer">
-                <div class="he-lbl">This year, from your employer</div>
-                <div class="he-line">Galway Tech added <span class="he-amt">&euro;6,000</span></div>
-                <div class="he-sub">6% match on top of your salary.</div>
+              <div class="dash-pot-card">
+                <div class="dash-pot-hd">What could your pot buy?</div>
+                <div class="dash-pot-current">
+                  <div class="dash-pot-lbl">Current pot</div>
+                  <div class="dash-pot-val">&euro;48,240</div>
+                </div>
+                <div class="dash-locs">
+                  <div class="dash-loc"><div class="dash-loc-flag">🇮🇩</div><div class="dash-loc-name">Bali</div><div class="dash-loc-yrs">7.5 yrs</div></div>
+                  <div class="dash-loc"><div class="dash-loc-flag">🇹🇭</div><div class="dash-loc-name">Thailand</div><div class="dash-loc-yrs">6.2 yrs</div></div>
+                  <div class="dash-loc"><div class="dash-loc-flag">🇲🇽</div><div class="dash-loc-name">Mexico</div><div class="dash-loc-yrs">5.2 yrs</div></div>
+                  <div class="dash-loc"><div class="dash-loc-flag">🇬🇷</div><div class="dash-loc-name">Greece</div><div class="dash-loc-yrs">3.7 yrs</div></div>
+                </div>
               </div>
-              <div class="home-row"><span>You contributed</span><span class="hv">&euro;5,000</span></div>
-              <div class="home-row"><span>Tax relief</span><span class="hv gold">&euro;2,000</span></div>
-              <div class="home-proj">
-                <span class="hp-l">On track at 65</span>
-                <span class="hp-v">&euro;2,400/mo</span>
+              <div class="dash-stats">
+                <div class="dash-stat-card">
+                  <div class="dash-stat-lbl">Monthly contribution</div>
+                  <div class="dash-stat-val">&euro;400</div>
+                  <div class="dash-stat-sub">Net cost: &euro;320</div>
+                </div>
+                <div class="dash-stat-card">
+                  <div class="dash-stat-lbl">Projected pot</div>
+                  <div class="dash-stat-val">&euro;192k</div>
+                  <div class="dash-stat-sub">&uarr; Goal exceeded</div>
+                </div>
               </div>
             </div>
           </div>
           <div class="cap">
-            <div class="cap-line"><span class="cn">03</span><span class="ch">Money owned, not deducted.</span></div>
-            <div class="cb">Today's balance leads, and the <strong>employer match is shown as money the saver owns,</strong> not buried in a payslip.</div>
+            <div class="cap-line"><span class="cn">03</span><span class="ch">A goal they can picture, not a number they can't.</span></div>
+            <div class="cb">Retirement framed in years of living abroad, with the <strong>employer match and projection visible at a glance.</strong></div>
           </div>
         </div>
 
@@ -321,35 +413,77 @@
             </div>
           </div>
 
-          <!-- TILE 05: AI assistant (largest) — bundled-benefits maternity question -->
+          <!-- TILE 05: AI Portfolio Advisor — performance vs benchmarks + quick actions -->
           <div>
             <div class="tile t-lg">
               <div class="app-bar">
-                <div class="ab-logo"></div>
-                <div class="ab-name">Ask Accruo</div>
-                <div class="ab-meta">Grounded across your benefits</div>
+                <div class="ab-logo">A</div>
+                <div class="ab-name">AI Portfolio Advisor</div>
+                <div class="ab-meta">Overview</div>
               </div>
-              <div class="ai-screen">
-                <div class="ai-q">I'm pregnant! What cover do we have for the baby?</div>
-                <div class="ai-tag">Accruo &middot; grounded in your Galway Tech benefits</div>
-                <div class="ai-a">
-                  Congratulations Aoife. Your benefits package covers this on two sides:
-                  <div class="ai-bullet">
-                    <span class="ai-mk">&bull;</span>
-                    <span class="ai-tx"><strong>Life cover</strong> with Irish Life pays <strong>4&times; salary</strong> (&euro;240,000) to your nominated beneficiaries. Add the baby once born.</span>
+              <div class="adv-screen">
+                <div>
+                  <div class="adv-port-lbl">Total portfolio value</div>
+                  <div class="adv-port-hd">
+                    <div class="adv-port-val">&euro;92,030</div>
+                    <div class="adv-ytd">+11.2% YTD</div>
                   </div>
-                  <div class="ai-bullet">
-                    <span class="ai-mk">&bull;</span>
-                    <span class="ai-tx"><strong>Health cover</strong> with VHI includes <strong>maternity benefit</strong> after a 52-week wait, the baby is automatically covered for the first 13 weeks, and paediatric outpatient is included from week 14.</span>
-                  </div>
-                  <div class="ai-cite">Sources: Galway Tech group life policy, VHI Company Plan Plus schedule.</div>
                 </div>
-                <div class="ai-input"><span class="ai-mic"></span>Type a question</div>
+                <div class="adv-stats">
+                  <div class="adv-stat">
+                    <div class="adv-stat-lbl">Pension pot</div>
+                    <div class="adv-stat-val">&euro;52,400</div>
+                    <div class="adv-stat-delta">+8.4%</div>
+                  </div>
+                  <div class="adv-stat">
+                    <div class="adv-stat-lbl">PRSA value</div>
+                    <div class="adv-stat-val">&euro;36,250</div>
+                    <div class="adv-stat-delta">+12.1%</div>
+                  </div>
+                  <div class="adv-stat">
+                    <div class="adv-stat-lbl">Return YTD</div>
+                    <div class="adv-stat-val" style="color:var(--green);">+11.2%</div>
+                    <div class="adv-stat-note">vs ISEQ +7.4%</div>
+                  </div>
+                </div>
+                <div class="adv-bench-section">
+                  <div class="adv-bench-hd">Performance vs benchmarks</div>
+                  <div class="adv-bench-row">
+                    <div class="adv-bench-lbl">Your portfolio</div>
+                    <div class="adv-bench-bar"><div class="adv-bench-fill own" style="width:100%;"></div></div>
+                    <div class="adv-bench-pct own">11.2%</div>
+                  </div>
+                  <div class="adv-bench-row">
+                    <div class="adv-bench-lbl">MSCI World</div>
+                    <div class="adv-bench-bar"><div class="adv-bench-fill msci" style="width:81%;"></div></div>
+                    <div class="adv-bench-pct">9.1%</div>
+                  </div>
+                  <div class="adv-bench-row">
+                    <div class="adv-bench-lbl">ISEQ Overall</div>
+                    <div class="adv-bench-bar"><div class="adv-bench-fill iseq" style="width:66%;"></div></div>
+                    <div class="adv-bench-pct">7.4%</div>
+                  </div>
+                  <div class="adv-bench-row">
+                    <div class="adv-bench-lbl">Irish avg pension</div>
+                    <div class="adv-bench-bar"><div class="adv-bench-fill avg" style="width:52%;"></div></div>
+                    <div class="adv-bench-pct">5.8%</div>
+                  </div>
+                </div>
+                <div class="adv-actions">
+                  <div class="adv-action primary">
+                    <div class="adv-action-h">Generate optimisation report</div>
+                    <div class="adv-action-sub">AI reviews your portfolio and gives 4 tailored tips</div>
+                  </div>
+                  <div class="adv-action secondary">
+                    <div class="adv-action-h">Ask the AI advisor</div>
+                    <div class="adv-action-sub">Chat freely about your portfolio</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="cap">
-              <div class="cap-line"><span class="cn">05</span><span class="ch">One assistant, across the bundled stack.</span></div>
-              <div class="cb">In-app AI grounded in the saver's pension, health, and life cover. <strong>The bundled stack is the unique data product.</strong><sup class="fn">1</sup></div>
+              <div class="cap-line"><span class="cn">05</span><span class="ch">Portfolio advice, not just balance updates.</span></div>
+              <div class="cb">AI grounded in the saver's full account history, benchmarked against the market. <strong>A data product a standalone pension app cannot build.</strong><sup class="fn">1</sup></div>
             </div>
           </div>
 
