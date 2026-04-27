@@ -14,7 +14,7 @@
 <div class="sw">
   <style>
     /* ---- Three segment cards ---- */
-    .seg-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 4px 0 10px; }
+    .seg-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 10px 0 8px; }
     .seg {
       display: flex; flex-direction: column;
       background: #fff;
@@ -32,14 +32,14 @@
     .seg .seg-who strong { color: var(--ink); font-weight: 600; }
 
     .seg .seg-howlbl { font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 8px 0 4px; }
-    .seg .seg-how { display: flex; flex-direction: column; gap: 4px; }
+    .seg .seg-how { display: flex; flex-direction: column; gap: 4px; padding-bottom: 12px; }
     .seg .seg-how .h-row { display: flex; gap: 6px; align-items: baseline; font-size: 10.5px; line-height: 1.4; color: var(--ink); }
     .seg .seg-how .h-row .h-dot { width: 3px; height: 3px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 5px; }
     .seg.s2 .seg-how .h-row .h-dot { background: var(--green); }
     .seg.s3 .seg-how .h-row .h-dot { background: var(--forest); }
     .seg .seg-how .h-row strong { color: var(--ink); font-weight: 600; }
 
-    .seg .seg-kpis { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: 9px -12px 0; padding: 7px 12px 9px; background: rgba(19,79,52,0.04); border-top: 1px solid rgba(19,79,52,0.08); }
+    .seg .seg-kpis { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4px; margin: auto -12px 0; padding: 9px 12px 9px; background: rgba(19,79,52,0.04); border-top: 1px solid rgba(19,79,52,0.08); }
     .seg .seg-kpi { display: flex; flex-direction: column; gap: 1px; }
     .seg .seg-kpi .k-yr { font-size: 8.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
     .seg .seg-kpi .k-num { font-family: var(--font-serif); font-size: 15px; font-weight: 500; color: var(--gold-deep); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
@@ -66,23 +66,23 @@
     .cp-band .cp-body strong { color: rgba(255,255,255,1); font-weight: 600; }
 
     /* ---- Marketing chart (horizontal bars) ---- */
-    .mkt { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; margin-top: 6px; align-items: start; }
+    .mkt { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; margin-top: 6px; align-items: stretch; }
+    .mkt > .mkt-left { display: flex; flex-direction: column; }
 
-    .legend { display: flex; gap: 14px; margin-bottom: 6px; flex-wrap: wrap; }
+    .legend { display: flex; flex-direction: column; gap: 4px; margin-bottom: 8px; }
     .legend .lg { display: flex; align-items: center; gap: 6px; font-size: 9.5px; color: var(--ink); }
     .legend .sw-box { width: 9px; height: 9px; flex-shrink: 0; }
 
-    .bars { display: flex; flex-direction: column; gap: 7px; }
+    .bars { display: flex; flex-direction: column; gap: 7px; flex: 1; justify-content: space-between; }
     .bar-row { display: grid; grid-template-columns: 24px 1fr 50px; gap: 8px; align-items: center; }
     .bar-yr { font-size: 9.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
     .bar-track { display: flex; height: 22px; background: rgba(19,79,52,0.04); border: 1px solid rgba(19,79,52,0.06); }
-    .bar-seg { display: flex; align-items: center; padding: 0 5px; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.92); font-variant-numeric: tabular-nums; overflow: hidden; white-space: nowrap; }
-    .bar-seg.foundation { background: #B89A4D; color: #3d2710; }
-    .bar-seg.founder { background: var(--green); }
+    .bar-seg { display: flex; align-items: center; padding: 0 4px; font-size: 9px; font-weight: 600; color: rgba(255,255,255,0.92); font-variant-numeric: tabular-nums; overflow: hidden; white-space: nowrap; }
+    .bar-seg.brand { background: #B89A4D; color: #3d2710; }
+    .bar-seg.commissions { background: var(--gold-deep); color: #fff; }
+    .bar-seg.outreach { background: var(--green); }
     .bar-seg.paid { background: var(--forest); }
     .bar-total { font-family: var(--font-serif); font-size: 13px; font-weight: 500; color: var(--ink); font-variant-numeric: tabular-nums; text-align: right; }
-
-    .chart-foot { font-size: 9.5px; color: var(--muted); margin-top: 8px; line-height: 1.45; }
 
     /* ---- Tactic paragraphs ---- */
     .tactics { display: flex; flex-direction: column; gap: 9px; }
@@ -100,41 +100,70 @@
     .intro-line { font-size: 12.5px; line-height: 1.55; color: var(--ink); margin-bottom: 4px; }
     .intro-line strong { color: var(--green); font-weight: 600; }
 
-    .b2c-strip {
-      display: flex; align-items: baseline; gap: 10px;
-      font-size: 10.5px; color: var(--muted); line-height: 1.4;
-      padding: 6px 10px; background: rgba(201,162,39,0.07);
-      border-left: 2px solid var(--gold);
-      margin: 0 0 10px;
-    }
-    .b2c-strip strong { color: var(--gold-deep); font-weight: 600; font-family: var(--font-serif); font-size: 13px; font-variant-numeric: tabular-nums; }
+    .sect-h.tight { margin: 10px 0 6px; padding-bottom: 6px; }
 
-    .sect-h.tight { margin: 12px 0 8px; padding-bottom: 7px; }
+    /* ---- Inline HR quote (replaces a tactic slot) ---- */
+    .tac-quote {
+      padding: 8px 10px;
+      background: var(--green);
+      color: rgba(255,255,255,0.94);
+      border-left: 2px solid var(--gold);
+    }
+    .tac-quote .tq-tag {
+      font-size: 8.5px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 4px;
+    }
+    .tac-quote .tq-body {
+      font-size: 10.5px; line-height: 1.5;
+    }
+
+    /* ---- Individual savers strip (bottom) ---- */
+    .ind-block { margin-top: 10px; }
+    .ind-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .ind-card {
+      background: #fff; border: 1px solid var(--r1);
+      border-left: 3px solid var(--gold);
+      padding: 8px 12px;
+    }
+    .ind-card.b { border-left-color: var(--gold-deep); }
+    .ind-card .ind-name {
+      font-family: var(--font-serif); font-size: 13px; font-weight: 500;
+      color: var(--ink); line-height: 1.2; margin-bottom: 3px;
+    }
+    .ind-card .ind-body {
+      font-size: 10.5px; line-height: 1.45; color: var(--ink);
+    }
+    .ind-card .ind-body strong { color: var(--green); font-weight: 600; }
+    .ind-foot {
+      font-size: 12.5px; line-height: 1.5; color: var(--ink);
+      margin-top: 8px;
+    }
+    .ind-foot strong { color: var(--green); font-weight: 600; }
   </style>
 
-  <div class="sm">13 &middot; Execution <em>Segmentation and channels</em></div>
+  <div class="sm">13 &middot; Execution <em>Marketing strategy</em></div>
   <div class="slide cream">
     <div class="si fc">
 
       <div class="sh">
         <div class="sh-left">
-          <div class="eyebrow">4.2 &middot; Segmentation and channels</div>
-          <h2 class="t-title">Sell in order of resistance. <em>Net-new buyers first, switchers last.</em></h2>
+          <div class="eyebrow">4.2 &middot; Marketing strategy</div>
+          <h2 class="t-title">A naturally segmented market. <em>Sell in order of resistance.</em></h2>
         </div>
       </div>
 
-      <p class="intro-line">Three buyer segments from the financial model, sequenced by switching friction. Concrete heuristics for finding the buyers inside each one, not category labels.</p>
+      <p class="intro-line">The B2B market naturally divides by the pension solution already in place. <strong>We&rsquo;ve sequenced the market by switching friction</strong>, with small new-buyers first and large switchers last.</p>
 
       <div class="seg-grid">
         <div class="seg s1">
-          <div class="seg-tag">Segment 1 &middot; volume engine</div>
-          <div class="seg-name">MFF Small Business</div>
-          <div class="seg-who">Sub-50 staff facing the <strong>My Future Fund</strong> auto-enrolment deadline. The default state scheme is the only competitor. Decisions in days.</div>
+          <div class="seg-tag">Segment 1 &middot; Launch Market</div>
+          <div class="seg-name">Small Businesses</div>
+          <div class="seg-who">Sub-50 staff, already auto-enrolled into the state default. The conversation is <strong>what they&rsquo;re getting back for the spend</strong>, and a visible benefit for their employees.</div>
           <div class="seg-howlbl">How we find them</div>
           <div class="seg-how">
-            <div class="h-row"><span class="h-dot"></span><span><strong>Tech-forward founder-led firms</strong> sourced via Dogpatch, NDRC alumni and Dublin tech-employer networks</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>Firms <strong>newly crossing the AE threshold</strong>, prompted by company-size triggers in CRO filings</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>Warm intros from <strong>accountant and payroll partners</strong> already serving the segment</span></div>
+            <div class="h-row"><span class="h-dot"></span><span><strong>Tech-forward firms</strong> sourced via the Dublin start-up community</span></div>
+            <div class="h-row"><span class="h-dot"></span><span>Warm intros from <strong>accountant and payroll partners</strong>, on a commission model</span></div>
           </div>
           <div class="seg-kpis">
             <div class="seg-kpi"><span class="k-yr">Y2</span><span class="k-num">1,153</span><span class="k-lbl">employers</span></div>
@@ -144,14 +173,14 @@
         </div>
 
         <div class="seg s2">
-          <div class="seg-tag">Segment 2 &middot; LTV anchor</div>
-          <div class="seg-name">Medium Master Trust</div>
-          <div class="seg-who">50&ndash;500 staff with an incumbent broker or master trust. The switching conversation is service-led, not price-led.</div>
+          <div class="seg-tag">Segment 2 &middot; Growth Market</div>
+          <div class="seg-name">Medium Sized Businesses</div>
+          <div class="seg-who">50&ndash;500 staff companies managed by an incumbent broker. The switching conversation is service-led, with cost as a secondary lever.</div>
           <div class="seg-howlbl">How we find them</div>
           <div class="seg-how">
             <div class="h-row"><span class="h-dot"></span><span>Firms that have <strong>grown rapidly and outgrown</strong> their original broker setup</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>Recent <strong>VC- and PE-backed scale-ups</strong> consolidating HR vendors after a funding round</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>HR leaders with documented <strong>service complaints</strong> at incumbents, surfaced via LinkedIn outbound</span></div>
+            <div class="h-row"><span class="h-dot"></span><span><strong>Multinationals</strong> used to better benefits</span></div>
+            <div class="h-row"><span class="h-dot"></span><span>HR leaders flagged by <strong>Glassdoor reviews</strong> citing weak benefits</span></div>
           </div>
           <div class="seg-kpis">
             <div class="seg-kpi"><span class="k-yr">Y2</span><span class="k-num">40</span><span class="k-lbl">employers</span></div>
@@ -161,14 +190,13 @@
         </div>
 
         <div class="seg s3">
-          <div class="seg-tag">Segment 3 &middot; credibility unlock</div>
-          <div class="seg-name">Large Standalone DC</div>
-          <div class="seg-who">500+ staff with a standalone DC scheme. Reached only after Stage 1 and 2 build the credibility to carry the room.</div>
+          <div class="seg-tag">Segment 3 &middot; Late Stage</div>
+          <div class="seg-name">Large Corporations</div>
+          <div class="seg-who">500+ staff businesses that go direct to providers and run their own scheme. Reached only after early growth in other segments.</div>
           <div class="seg-howlbl">How we find them</div>
           <div class="seg-how">
-            <div class="h-row"><span class="h-dot"></span><span>Warm intros via <strong>Sean Healey&rsquo;s advisor network</strong> (ran the Bank of Canada broker arm)</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>Schemes with documented <strong>governance reviews</strong> or recent trustee changes</span></div>
-            <div class="h-row"><span class="h-dot"></span><span>Direct distribution past the <strong>&euro;100m AUM</strong> threshold once the Master Trust licence is operational</span></div>
+            <div class="h-row"><span class="h-dot"></span><span>Warm intros from <strong>other employers</strong>, plus referrals from employees who have moved between firms</span></div>
+            <div class="h-row"><span class="h-dot"></span><span><strong>HR-team-targeted events</strong>, since HR rarely gets the perk budget</span></div>
           </div>
           <div class="seg-kpis">
             <div class="seg-kpi"><span class="k-yr">Y2</span><span class="k-num">0</span><span class="k-lbl">employers</span></div>
@@ -178,26 +206,42 @@
         </div>
       </div>
 
-      <div class="b2c-strip"><strong>16,800</strong> PRSA savers acquired direct by Y4 (B2C), running in parallel to the workplace base.</div>
-
       <div class="cp-band">
         <div class="cp-fig">
-          <span class="cp-tag">Y4 members</span>
+          <span class="cp-tag">Y4 total members</span>
           <span class="cp-num">103k</span>
-          <span class="cp-sub">on &euro;309k Y4 marketing</span>
+          <span class="cp-sub">across B2B + B2C</span>
         </div>
-        <div class="cp-body">Why this is achievable: <em>cross-pollination</em>. Small-business owners are individuals too. The same person enrols their company through B2B and opens a PRSA through B2C. <strong>One acquisition cost, two relationships</strong>, plus every B2B logo&rsquo;s employees flow into the member count. Pure-B2B competitors cannot match this efficiency.</div>
+        <div class="cp-body">Achievable because our <em>digital-first approach</em> scales, and our dual customer focus enables <strong>cross-pollination</strong>. Small-business owners are individuals too, so the same person can enrol their company through B2B and open a PRSA through B2C.</div>
+      </div>
+
+      <div class="ind-block">
+        <div class="sect-h tight">
+          <div class="eyebrow">Individual savers &middot; two acquisition tracks</div>
+        </div>
+        <div class="ind-grid">
+          <div class="ind-card">
+            <div class="ind-name">No PRSA yet</div>
+            <div class="ind-body">The mass market that incumbents don&rsquo;t serve digitally. <strong>Educate</strong> via content and paid social, then convert with frictionless onboarding.</div>
+          </div>
+          <div class="ind-card b">
+            <div class="ind-name">Existing PRSA holder</div>
+            <div class="ind-body">Already saving, but on legacy platforms with opaque fees. <strong>Prove the same value at lower cost</strong> via transparent fee comparison and one-click transfer.</div>
+          </div>
+        </div>
+        <div class="ind-foot"><strong>No one is doing this.</strong> The digital product for the mass market hasn&rsquo;t existed; PRSAs have always been sold to high-net-worth clients via brokers, so this market is a blue ocean.</div>
       </div>
 
       <div class="sect-h tight">
-        <div class="eyebrow">Marketing spend &middot; &euro;48k Y1 to &euro;309k Y4 &middot; scales with revenue, not ahead of it</div>
+        <div class="eyebrow">Marketing spend &middot; scales with revenue, not ahead of it</div>
       </div>
 
       <div class="mkt">
-        <div>
+        <div class="mkt-left">
           <div class="legend">
-            <div class="lg"><span class="sw-box" style="background:#B89A4D;"></span>Foundation (outsourced lead, PR, brand)</div>
-            <div class="lg"><span class="sw-box" style="background:var(--green);"></span>Founder-led (HR dinners, accountant)</div>
+            <div class="lg"><span class="sw-box" style="background:#B89A4D;"></span>Brand &amp; PR (lead, PR, creative)</div>
+            <div class="lg"><span class="sw-box" style="background:var(--gold-deep);"></span>Partner commissions (accountant, payroll)</div>
+            <div class="lg"><span class="sw-box" style="background:var(--green);"></span>Outreach events (HR dinners)</div>
             <div class="lg"><span class="sw-box" style="background:var(--forest);"></span>Paid digital (LinkedIn, Meta, Google)</div>
           </div>
 
@@ -205,70 +249,68 @@
             <div class="bar-row">
               <span class="bar-yr">Y1</span>
               <div class="bar-track">
-                <div class="bar-seg foundation" style="width:15.53%;">48</div>
+                <div class="bar-seg brand" style="width:15.53%;">48</div>
               </div>
               <span class="bar-total">&euro;48k</span>
             </div>
             <div class="bar-row">
               <span class="bar-yr">Y2</span>
               <div class="bar-track">
-                <div class="bar-seg foundation" style="width:28.48%;">88</div>
-                <div class="bar-seg founder"   style="width:11.97%;">37</div>
-                <div class="bar-seg paid"      style="width:17.15%;">53</div>
+                <div class="bar-seg brand"       style="width:28.48%;">88</div>
+                <div class="bar-seg commissions" style="width:3.88%;">12</div>
+                <div class="bar-seg outreach"    style="width:8.09%;">25</div>
+                <div class="bar-seg paid"        style="width:17.15%;">53</div>
               </div>
               <span class="bar-total">&euro;178k</span>
             </div>
             <div class="bar-row">
               <span class="bar-yr">Y3</span>
               <div class="bar-track">
-                <div class="bar-seg foundation" style="width:42.72%;">132</div>
-                <div class="bar-seg founder"   style="width:17.80%;">55</div>
-                <div class="bar-seg paid"      style="width:29.13%;">90</div>
+                <div class="bar-seg brand"       style="width:42.72%;">132</div>
+                <div class="bar-seg commissions" style="width:6.47%;">20</div>
+                <div class="bar-seg outreach"    style="width:11.33%;">35</div>
+                <div class="bar-seg paid"        style="width:29.13%;">90</div>
               </div>
               <span class="bar-total">&euro;277k</span>
             </div>
             <div class="bar-row">
               <span class="bar-yr">Y4</span>
               <div class="bar-track">
-                <div class="bar-seg foundation" style="width:46.60%;">144</div>
-                <div class="bar-seg founder"   style="width:20.39%;">63</div>
-                <div class="bar-seg paid"      style="width:33.01%;">102</div>
+                <div class="bar-seg brand"       style="width:46.60%;">144</div>
+                <div class="bar-seg commissions" style="width:7.44%;">23</div>
+                <div class="bar-seg outreach"    style="width:12.94%;">40</div>
+                <div class="bar-seg paid"        style="width:33.01%;">102</div>
               </div>
               <span class="bar-total">&euro;309k</span>
             </div>
           </div>
-
-          <p class="chart-foot">Foundation spend (outsourced marketing lead, PR, brand) underwrites every channel. Founder-led and paid digital scale only after Y1 product launch.</p>
         </div>
 
         <div class="tactics">
           <div class="tac green">
             <div class="tac-hd">
-              <div class="tac-name">Founder-led HR dinner series</div>
+              <div class="tac-name">HR dinner series</div>
               <div class="tac-spend">&euro;25k Y2 &rarr; &euro;40k Y4</div>
             </div>
-            <div class="tac-body">Single-room conversations with 8&ndash;12 HR decision-makers per evening, framed around the switching question and the default MFF state scheme. <strong>Founder-led to maximise trust</strong> before the AE handover deadline bites.</div>
+            <div class="tac-body">Single-room conversations with 8&ndash;12 HR decision-makers per evening, building recognition for the Accruo brand and familiarity with our offering. <strong>Founder-led to maximise trust.</strong></div>
           </div>
           <div class="tac forest">
             <div class="tac-hd">
               <div class="tac-name">LinkedIn Sales Navigator outbound</div>
               <div class="tac-spend">&euro;15k Y2 &rarr; &euro;28k Y4</div>
             </div>
-            <div class="tac-body">Outbound to HR leads at SMEs facing imminent MFF deadlines, targeted by company size and sector. <strong>Pipeline engine</strong> for Segment 1 and the long approach into Segment 2.</div>
+            <div class="tac-body"><strong>Surprisingly, this channel isn&rsquo;t saturated.</strong> The fragmentation of the broker market means this sales avenue is largely untapped.</div>
           </div>
-          <div class="tac forest">
-            <div class="tac-hd">
-              <div class="tac-name">B2C paid (Meta + LinkedIn)</div>
-              <div class="tac-spend">&euro;30k Y2 &rarr; &euro;57k Y4</div>
-            </div>
-            <div class="tac-body">Paid social to individual savers. <strong>Direct PRSA revenue and observability for the B2B sale</strong>: HR leads see the same brand off-hours, shortening the warm-up before outbound lands.</div>
+          <div class="tac-quote">
+            <div class="tq-tag">Our discussion with a financial-sector HR lead</div>
+            <div class="tq-body">&ldquo;We met two brokers eight years ago, picked one on a colleague&rsquo;s recommendation, and have not been approached by another broker since. Not by email, not by LinkedIn.&rdquo;</div>
           </div>
         </div>
       </div>
 
     </div>
     <div class="sf">
-      <span class="sf-doc">Accruo &middot; Segmentation and channels</span>
+      <span class="sf-doc">Accruo &middot; Marketing strategy</span>
       <span class="sf-pg">13</span>
     </div>
   </div>
