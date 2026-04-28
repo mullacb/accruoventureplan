@@ -91,7 +91,7 @@ html, body {
 .section-intro .si-label { display: flex; flex-direction: column; gap: 4px; flex: 1; padding-bottom: 6px; }
 .section-intro .si-name { font-family: var(--font-serif); font-size: 36px; line-height: 1; letter-spacing: -.022em; font-weight: 500; color: var(--green); }
 
-.sf { position: absolute; bottom: 20px; left: var(--m); right: var(--m); display: flex; justify-content: space-between; align-items: center; }
+.sf { position: absolute; bottom: 20px; left: var(--m); right: var(--m); display: flex; justify-content: space-between; align-items: baseline; }
 .sf-pg  { font-family: var(--font-serif); font-size: 12px; color: var(--muted); font-weight: 400; }
 .sf-doc { font-size: 10px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 600; }
 
@@ -535,3 +535,21 @@ sup.fn { font-family: var(--font-sans); font-size: .68em; font-weight: 600; colo
 .pc-tags .skill { color: var(--green); border-color: rgba(19,79,52,0.22); background: rgba(19,79,52,0.07); }
 .pc-tags .co    { color: var(--gold);  border-color: rgba(181,131,36,0.25); background: rgba(181,131,36,0.07); }
 .pc-tags .deg   { color: var(--muted); border-color: var(--r1); background: transparent; }
+
+/* ============================================================
+   Print / PDF export — A4, no on-screen chrome
+   ============================================================ */
+@media print {
+  @page { size: A4; margin: 0; }
+  html, body { background: #FFFFFF; }
+  .document { padding: 0; gap: 0; display: block; }
+  .sw { display: block; gap: 0; }
+  .sm { display: none; }
+  .slide {
+    box-shadow: none;
+    page-break-after: always;
+    break-after: page;
+    margin: 0;
+  }
+  .sw:last-child .slide { page-break-after: auto; break-after: auto; }
+}
